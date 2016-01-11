@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style>
+        .mainPanel{
+            margin: 10px 10px;
+            width: 1000px;
+            border: 1px solid black;
+        }
+        .hPanel{
+            background-color: #a4c7df;
+            border-bottom: 1px solid black;
+            margin: 0 auto;
+            width: 1000px;
+        }
+        .contentPanel{
+            margin: 0 auto;
+            width: 1000px;
+        }
+    </ui:style>
+    <g:VerticalPanel styleName="{style.mainPanel}">
+        <g:HorizontalPanel styleName="{style.hPanel}">
+            <g:Label horizontalAlignment="center">Home</g:Label>
+        </g:HorizontalPanel>
+        <g:VerticalPanel styleName="{style.contentPanel}">
+            <g:Label>Используемые технологии:</g:Label>
+            <g:Label>
+                Spring 4.x(Spring IoC, Spring MVC)
+                GWT 2.7
+                RestyGWT
+                RestFull
+                Jackson
+                Log4J
+            </g:Label>
+        </g:VerticalPanel>
+    </g:VerticalPanel>
+</ui:UiBinder>

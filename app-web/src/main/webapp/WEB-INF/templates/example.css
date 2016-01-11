@@ -1,0 +1,22 @@
+/** Add css rules here for your application. */
+
+body, td, a, div, .p,footer {
+    font-family: arial, sans-serif
+}
+footer{
+    background: #a4c7df;
+    border-bottom: 1px solid black;
+    height: 15%;
+}
+
+.th{
+    background-color: #a4c7df;
+    padding: 10px;
+}
+h1{
+    font-size: 2em;
+    padding: 40px;
+}
+
+
+

@@ -1,0 +1,63 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style>
+        .sucPanel {
+            border-radius: 5px;
+            border: 1px solid black;
+            background-color: #bfe9a2;
+        }
+
+        .errorPanel {
+            border-radius: 5px;
+            border: 1px solid black;
+            background-color: #e98a71;
+        }
+
+        .mainPanel {
+            margin: 10px 10px;
+            width: 1000px;
+            border: 1px solid black;
+        }
+
+        .hPanel {
+            background-color: #a4c7df;
+            border-bottom: 1px solid black;
+            margin: 0 auto;
+            width: 1000px;
+        }
+
+        .contentPanel {
+            padding: 1em;
+            margin: 0 auto;
+            width: 1000px;
+        }
+        .label{
+            padding: 1.5em;
+        }
+
+    </ui:style>
+    <g:VerticalPanel styleName="{style.mainPanel}">
+        <g:HorizontalPanel styleName="{style.hPanel}">
+            <g:Label horizontalAlignment="center">Add user</g:Label>
+        </g:HorizontalPanel>
+        <g:VerticalPanel styleName="{style.contentPanel}">
+            <g:Label>Title:</g:Label>
+            <g:TextBox ui:field="titleField"/>
+            <g:Label>Description:</g:Label>
+            <g:TextArea ui:field="descField"/>
+            <g:Label>Target:</g:Label>
+            <g:ListBox ui:field="listField"/>
+            <g:VerticalPanel>
+                <g:Button ui:field="submitButton">Submit!</g:Button>
+                <g:HorizontalPanel ui:field="succesPanel" visible="false" styleName="{style.sucPanel}">
+                    <g:Label styleName="{style.label}">Task successfully updated</g:Label>
+                </g:HorizontalPanel>
+                <g:HorizontalPanel ui:field="errorPanel" visible="false" styleName="{style.errorPanel}">
+                    <g:Label styleName="{style.label}">Error create task</g:Label>
+                </g:HorizontalPanel>
+            </g:VerticalPanel>
+        </g:VerticalPanel>
+    </g:VerticalPanel>
+
+</ui:UiBinder>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/scheduler_db" />
+        <property name="username" value="root1" />
+        <property name="password" value="123" />
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="hibernateProperties">
+            <value>
+                hibernate.current_session_context_class=thread
+            </value>
+        </property>
+
+        <property name="annotatedClasses">
+            <list>
+                <value>netcracker.app.wf.back.model.Role</value>
+                <value>netcracker.app.wf.back.model.Task</value>
+                <value>netcracker.app.wf.back.model.User</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="userDao" class="netcracker.app.wf.back.dao.user.HibernateUserDAO">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+
+    <bean id="taskDao" class="netcracker.app.wf.back.dao.task.HibernateTaskDAO">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+</beans>
