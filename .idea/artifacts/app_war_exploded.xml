@@ -55,6 +55,9 @@
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.31" />
           <element id="library" level="project" name="Maven: javax.servlet.jsp:javax.servlet.jsp-api:2.3.1" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="archive" name="app-security-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="app-security" />
+          </element>
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.1.4.RELEASE" />
