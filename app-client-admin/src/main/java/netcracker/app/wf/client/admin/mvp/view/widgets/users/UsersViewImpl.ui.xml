@@ -1,36 +1,9 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <ui:style>
-        .table{
-            text-align: center;
-            width:100%;
-            background-color: aliceblue;
-            margin-top: 1em;
-            border-bottom: 1px solid black;
-        }
-        .mainPanel{
-            margin: 10px 10px;
-            width: 1000px;
-            border: 1px solid black;
-        }
-        .hPanel{
-            background-color: #a4c7df;
-            border-bottom: 1px solid black;
-            margin: 0 auto;
-            width: 1000px;
-        }
-        .contentPanel{
-            margin: 0 auto;
-            width: 1000px;
-        }
-
-    </ui:style>
-    <g:VerticalPanel styleName="{style.mainPanel}">
-    <g:HorizontalPanel styleName="{style.hPanel}">
-        <g:Label horizontalAlignment="center">Tasks</g:Label>
-    </g:HorizontalPanel>
-        <g:VerticalPanel styleName="{style.contentPanel}">
+    <ui:with field="res" type="netcracker.app.wf.client.admin.style.GwtResource"/>
+    <g:VerticalPanel styleName="{res.style.mainPanel}">
+        <g:VerticalPanel styleName="{res.style.contentPanel}">
             <g:HorizontalPanel>
                 <g:VerticalPanel>
                     <g:Label>Enter name:</g:Label>
@@ -48,7 +21,7 @@
                     </g:HorizontalPanel>
                 </g:VerticalPanel>
             </g:HorizontalPanel>
-            <g:FlexTable ui:field="usersTable" styleName="{style.table}"/>
+            <g:FlexTable ui:field="usersTable" styleName="{res.style.table}"/>
             <g:Label ui:field="callbackField"/>
         </g:VerticalPanel>
     </g:VerticalPanel>
