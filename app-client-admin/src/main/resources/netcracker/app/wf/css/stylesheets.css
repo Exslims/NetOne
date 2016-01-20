@@ -53,9 +53,10 @@
     width:100%;
     background-color: aliceblue;
     margin-top: 1em;
+    border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
 .tableHead{
     background-color: #a4c7df;
-    padding: 10px;
+    border-bottom: 1px solid black;
 }

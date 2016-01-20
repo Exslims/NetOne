@@ -11,6 +11,7 @@ import java.util.List;
 public interface TasksView extends IsWidget {
     void updateTable(List<Task> tasks);
     void setPresenter(TasksPresenter presenter);
+    void setMessage(String var);
     public interface TasksPresenter{
         void updateTableByTitle(String token);
         void updateTableById(String token);

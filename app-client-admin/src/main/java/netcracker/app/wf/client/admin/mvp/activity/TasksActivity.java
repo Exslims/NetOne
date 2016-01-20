@@ -38,12 +38,13 @@ public class TasksActivity extends AbstractActivity implements TasksView.TasksPr
         service.getAllTasks(new MethodCallback<List<Task>>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-
+                view.setMessage("Error while loading, cause: " + throwable.getMessage());
             }
 
             @Override
             public void onSuccess(Method method, List<Task> tasks) {
                 view.updateTable(tasks);
+                view.setMessage("Loading completed");
             }
         });
     }
@@ -53,12 +54,13 @@ public class TasksActivity extends AbstractActivity implements TasksView.TasksPr
         service.getTaskByTitle(token, new MethodCallback<List<Task>>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-
+                view.setMessage("Error while loading, cause: " + throwable.getMessage());
             }
 
             @Override
             public void onSuccess(Method method, List<Task> tasks) {
                 view.updateTable(tasks);
+                view.setMessage("Loading completed");
             }
         });
     }
@@ -68,7 +70,7 @@ public class TasksActivity extends AbstractActivity implements TasksView.TasksPr
         service.getTaskById(Integer.parseInt(token), new MethodCallback<Task>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-
+                view.setMessage("Error while loading, cause: " + throwable.getMessage());
             }
 
             @Override
@@ -77,6 +79,7 @@ public class TasksActivity extends AbstractActivity implements TasksView.TasksPr
                 tasks.add(task);
 
                 view.updateTable(tasks);
+                view.setMessage("Loading completed");
             }
         });
     }
@@ -86,12 +89,13 @@ public class TasksActivity extends AbstractActivity implements TasksView.TasksPr
         service.getAllTasks(new MethodCallback<List<Task>>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-
+                view.setMessage("Error while loading, cause: " + throwable.getMessage());
             }
 
             @Override
             public void onSuccess(Method method, List<Task> tasks) {
                 view.updateTable(tasks);
+                view.setMessage("Loading completed");
             }
         });
     }

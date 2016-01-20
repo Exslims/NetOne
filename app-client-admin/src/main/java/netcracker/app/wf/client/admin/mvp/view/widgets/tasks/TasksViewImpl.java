@@ -36,6 +36,8 @@ public class TasksViewImpl extends Composite implements TasksView {
     Button searchByTitleButton;
     @UiField
     Button searchByIdButton;
+    @UiField
+    Label callbackField;
 
     public TasksViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
@@ -77,5 +79,10 @@ public class TasksViewImpl extends Composite implements TasksView {
     @Override
     public void setPresenter(TasksPresenter presenter) {
         this.presenter = presenter;
+    }
+
+    @Override
+    public void setMessage(String var) {
+        this.callbackField.setText(var);
     }
 }

@@ -25,6 +25,7 @@
             </g:VerticalPanel>
         </g:HorizontalPanel>
         <g:FlexTable ui:field="tasksTable" styleName="{res.style.table}"/>
+        <g:Label ui:field="callbackField"/>
     </g:VerticalPanel>
     </g:VerticalPanel>
 
