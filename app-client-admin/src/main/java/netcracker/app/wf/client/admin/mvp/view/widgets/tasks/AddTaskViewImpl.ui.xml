@@ -1,11 +1,11 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <ui:with field="res" type="netcracker.app.wf.client.admin.style.GwtResource"/>
-    <g:VerticalPanel styleName="{res.style.mainPanel}">
-        <g:HorizontalPanel styleName="{res.style.hPanel}">
+    <g:VerticalPanel>
+        <g:HorizontalPanel styleName="{res.style.contentHead}">
             <g:Label horizontalAlignment="center">Add user</g:Label>
         </g:HorizontalPanel>
-        <g:VerticalPanel styleName="{res.style.contentPanel}">
+        <g:VerticalPanel>
             <g:Label>Title:</g:Label>
             <g:TextBox ui:field="titleField"/>
             <g:Label>Description:</g:Label>

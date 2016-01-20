@@ -8,6 +8,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.client.admin.mvp.view.widgets.AddUserView;
 import netcracker.app.wf.back.model.User;
+import netcracker.app.wf.client.admin.style.GwtResource;
 
 /**
  * Created by ���������� on 03.12.2015.
@@ -24,6 +25,8 @@ public class AddUserImpl extends Composite implements AddUserView {
 
     private static AddUserImplUiBinder ourUiBinder = GWT.create(AddUserImplUiBinder.class);
 
+    @UiField
+    GwtResource res;
     @UiField
     TextBox loginField;
     @UiField
@@ -55,6 +58,7 @@ public class AddUserImpl extends Composite implements AddUserView {
 
     public AddUserImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
+        res.style().ensureInjected();
     }
 
     @UiHandler("submitButton")

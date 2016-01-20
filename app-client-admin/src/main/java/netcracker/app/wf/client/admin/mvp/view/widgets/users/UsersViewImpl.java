@@ -9,6 +9,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.client.admin.mvp.view.widgets.UsersView;
 import netcracker.app.wf.back.model.User;
+import netcracker.app.wf.client.admin.style.GwtResource;
 
 import java.util.List;
 
@@ -25,6 +26,8 @@ public class UsersViewImpl extends Composite implements UsersView {
 
 
     @UiField
+    GwtResource res;
+    @UiField
     FlexTable usersTable;
     @UiField
     TextBox nameField;
@@ -35,6 +38,7 @@ public class UsersViewImpl extends Composite implements UsersView {
 
     public UsersViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
+        res.style().ensureInjected();
     }
 
 
@@ -62,7 +66,7 @@ public class UsersViewImpl extends Composite implements UsersView {
         usersTable.setText(0,6,"Java skills");
         usersTable.setText(0,7,"Tasks count");
 
-        usersTable.getRowFormatter().addStyleName(0,"th");
+        usersTable.getRowFormatter().addStyleName(0,res.style().tableHead());
 
         for (User user : users) {
             int rowCount = usersTable.getRowCount();

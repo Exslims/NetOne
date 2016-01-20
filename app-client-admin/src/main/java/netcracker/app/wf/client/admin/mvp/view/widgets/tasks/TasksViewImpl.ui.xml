@@ -2,11 +2,11 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <ui:with field="res" type="netcracker.app.wf.client.admin.style.GwtResource"/>
-    <g:VerticalPanel styleName="{res.style.mainPanel}">
-        <g:HorizontalPanel styleName="{res.style.hPanel}">
-            <g:Label>Tasks</g:Label>
+    <g:VerticalPanel>
+        <g:HorizontalPanel styleName="{res.style.contentHead}">
+            <g:Label horizontalAlignment="center">Tasks</g:Label>
         </g:HorizontalPanel>
-    <g:VerticalPanel styleName="{res.style.contentPanel}">
+    <g:VerticalPanel>
         <g:HorizontalPanel>
             <g:VerticalPanel>
                 <g:Label>Enter title:</g:Label>

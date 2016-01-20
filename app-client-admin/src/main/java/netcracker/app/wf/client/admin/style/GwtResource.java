@@ -12,15 +12,16 @@ public interface GwtResource extends ClientBundle {
 
 
     public interface Style extends CssResource{
-        String link();
-        String mainPanel();
-        String content();
-        String hPanel();
         String footer();
-        String contentPanel();
+        String menuLink();
+        String menuWidget();
+        String menuHead();
+        String contentWidget();
+        String contentHead();
         String sucNotify();
         String errorNotify();
         String notifyLabel();
         String table();
+        String tableHead();
     }
 }
