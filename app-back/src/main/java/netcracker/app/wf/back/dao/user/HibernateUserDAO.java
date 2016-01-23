@@ -12,6 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -26,62 +27,52 @@ public class HibernateUserDAO implements UserDAO {
     Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT)
     public User findById(int id) {
         logger.trace("Searching user by id = " + id);
         Session currentSession =  sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
-        User user = (User) currentSession.createQuery("from User user where user.id = :user_id ")
+        return (User) currentSession.createQuery("from User user where user.id = :user_id ")
                 .setParameter("user_id", id).uniqueResult();
-        transaction.commit();
-        return user;
     }
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT)
     public List<User> findByName(String name) {
         logger.trace("Searching users by name = " + name);
         Session currentSession =  sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
-        List<User> users = HibernateUtils.cast(currentSession.createQuery("from User user where user.name = :username")
+        return HibernateUtils.cast(currentSession.createQuery("from User user where user.name = :username")
                 .setParameter("username", name));
-        transaction.commit();
-        return users;
 
     }
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT)
     public User findByEmail(String email) {
         logger.trace("Searching users by email = " + email);
         Session currentSession = sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
-        User user = (User) currentSession.createQuery("from User user where user.email = :email")
+        return (User) currentSession.createQuery("from User user where user.email = :email")
                 .setParameter("email", email).uniqueResult();
-        transaction.commit();
-        return user;
     }
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT)
     public User findByLogin(String login) {
         logger.trace("Searching users by login = " + login);
         Session currentSession = sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
-        User user = (User) currentSession.createQuery("from User user where user.login = :login")
+        return (User) currentSession.createQuery("from User user where user.login = :login")
                 .setParameter("login", login).uniqueResult();
-        transaction.commit();
-        return user;
     }
 
     @Override
-    @Transactional
+    @Transactional(isolation = Isolation.DEFAULT)
     public List<User> findAll() {
         logger.trace("Selecting all users...");
         Session currentSession = sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
-        List<User> userList = HibernateUtils.cast(currentSession.createQuery("from User user"));
-        transaction.commit();
-        return userList;
+        return HibernateUtils.cast(currentSession.createQuery("from User user"));
     }
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT , timeout = 1000, rollbackFor = Throwable.class)
     public void save(User user) {
         logger.trace("Saving  " + user.toString());
         Session currentSession = sessionFactory.getCurrentSession();
@@ -92,20 +83,19 @@ public class HibernateUserDAO implements UserDAO {
     }
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT , timeout = 1000, rollbackFor = Throwable.class)
     public void delete(User user) {
         logger.trace("Removing " + user.toString());
         Session currentSession = sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
         currentSession.update(user);
-        transaction.commit();
         logger.trace("User was removed successful");
     }
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT , timeout = 1000, rollbackFor = Throwable.class)
     public void update(User user) {
         logger.trace("Updating  " + user.toString());
         Session currentSession = sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
 
         Set<Role> roles = user.getRoles();
         for(Role role : roles)
@@ -116,7 +106,6 @@ public class HibernateUserDAO implements UserDAO {
             task.setUser(user);
 
         currentSession.update(user);
-        transaction.commit();
         logger.trace("Updated user: " + user.toString());
     }
 

@@ -5,9 +5,10 @@ import netcracker.app.wf.back.model.Task;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,37 +21,30 @@ public class HibernateTaskDAO implements TaskDAO {
     Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT)
     public List<Task> findAll() {
         Session currentSession =  sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
-        List<Task> user = HibernateUtils.cast(currentSession
-                .createQuery("from Task task"));
-        transaction.commit();
-        return user;
+        return HibernateUtils.cast(currentSession.createQuery("from Task task"));
     }
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT)
     public List<Task> findByTitle(String title) {
         logger.trace("Searching task by title = " + title);
         Session currentSession =  sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
-        List<Task> tasks = HibernateUtils.cast(currentSession
+        return HibernateUtils.cast(currentSession
                 .createQuery("from Task task where task.title = :task_title ")
                 .setParameter("task_title", title));
-        transaction.commit();
-        return tasks;
     }
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT)
     public Task findById(int id) {
         logger.trace("Searching task by id = " + id);
         Session currentSession =  sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
-        Task user = (Task) currentSession
+        return (Task) currentSession
                 .createQuery("from Task task where task.id = :task_id ")
                 .setInteger("task_id", id).uniqueResult();
-        transaction.commit();
-        return user;
     }
 
     public SessionFactory getSessionFactory() {

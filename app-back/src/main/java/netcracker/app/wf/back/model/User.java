@@ -22,13 +22,8 @@ public class User {
     private String address;
     private String country;
     private String javaSkills;
-
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Task> tasks;
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Role> roles;
-
-
 
     @Id
     @Column(name = "id" , insertable = false, updatable = false)
