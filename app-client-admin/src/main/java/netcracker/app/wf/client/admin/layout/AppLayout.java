@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import netcracker.app.wf.client.admin.ClientFactory;
+import netcracker.app.wf.client.admin.style.GwtResource;
 
 /**
  * Created by ���������� on 02.12.2015.
@@ -19,10 +20,14 @@ public class AppLayout extends Composite {
     private static MainViewUiBinder ourUiBinder = GWT.create(MainViewUiBinder.class);
 
     @UiField
+    GwtResource res;
+    @UiField
     SimplePanel appContent;
     public AppLayout(ClientFactory clientFactory) {
         initWidget(ourUiBinder.createAndBindUi(this));
         this.clientFactory = clientFactory;
+        res.style().ensureInjected();
+
     }
 
     public SimplePanel getAppContentHolder(){

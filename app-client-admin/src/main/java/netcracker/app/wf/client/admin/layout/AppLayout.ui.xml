@@ -1,42 +1,23 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:g='urn:import:com.google.gwt.user.client.ui'
-        >
-    <ui:style>
-        .link{
-            font-size: 1.5em;
-            color: black;
-            padding-bottom: 10px;
-            padding-left: 10px;
-        }
-        .mainPanel{
-            margin: 10px 10px;
-            width: 250px;
-            border: 1px solid black;
-        }
-        .content{
-            margin: 0 auto;
-            padding-left: 1em;
-        }
-        .hPanel{
-            background-color: #a4c7df;
-            border-bottom: 1px solid black;
-            width: 250px;
-        }
-    </ui:style>
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:with field="res" type="netcracker.app.wf.client.admin.style.GwtResource"/>
     <g:HTMLPanel>
+        <g:HorizontalPanel styleName="{res.style.footer}">
+            <g:Label>Test Project</g:Label>
+        </g:HorizontalPanel>
         <g:HorizontalPanel>
-            <g:VerticalPanel styleName="{style.mainPanel}">
-                <g:HorizontalPanel styleName="{style.hPanel}">
+            <g:VerticalPanel styleName="{res.style.menuWidget}">
+                <g:HorizontalPanel styleName="{res.style.menuHead}">
                     <g:Label horizontalAlignment="center">Menu</g:Label>
                 </g:HorizontalPanel>
-                    <g:Hyperlink targetHistoryToken="home:" styleName="{style.link}">Home</g:Hyperlink>
-                    <g:Hyperlink targetHistoryToken="users:123" styleName="{style.link}">Users</g:Hyperlink>
-                    <g:Hyperlink targetHistoryToken="tasks:" styleName="{style.link}">Tasks</g:Hyperlink>
-                    <g:Hyperlink targetHistoryToken="adduser:" styleName="{style.link}">Add User</g:Hyperlink>
-                    <g:Hyperlink targetHistoryToken="addtask:" styleName="{style.link}">Add Task</g:Hyperlink>
+                    <g:Hyperlink targetHistoryToken="home:" styleName="{res.style.menuLink}">Home</g:Hyperlink>
+                    <g:Hyperlink targetHistoryToken="users:" styleName="{res.style.menuLink}">Users</g:Hyperlink>
+                    <g:Hyperlink targetHistoryToken="tasks:" styleName="{res.style.menuLink}">Tasks</g:Hyperlink>
+                    <g:Hyperlink targetHistoryToken="adduser:" styleName="{res.style.menuLink}">Add User</g:Hyperlink>
+                    <g:Hyperlink targetHistoryToken="addtask:" styleName="{res.style.menuLink}">Add Task</g:Hyperlink>
             </g:VerticalPanel>
-            <g:SimplePanel ui:field="appContent" styleName="{style.content}"/>
+            <g:SimplePanel ui:field="appContent" styleName="{res.style.contentWidget}"/>
         </g:HorizontalPanel>
     </g:HTMLPanel>
 </ui:UiBinder>

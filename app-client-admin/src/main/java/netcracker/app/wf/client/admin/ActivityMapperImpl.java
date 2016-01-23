@@ -3,7 +3,6 @@ package netcracker.app.wf.client.admin;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
-
 import netcracker.app.wf.client.admin.mvp.activity.*;
 import netcracker.app.wf.client.admin.mvp.place.*;
 

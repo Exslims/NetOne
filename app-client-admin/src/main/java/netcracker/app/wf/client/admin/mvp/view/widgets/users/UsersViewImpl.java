@@ -3,12 +3,14 @@ package netcracker.app.wf.client.admin.mvp.view.widgets.users;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.client.admin.mvp.view.widgets.UsersView;
 import netcracker.app.wf.back.model.User;
+import netcracker.app.wf.client.admin.style.GwtResource;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class UsersViewImpl extends Composite implements UsersView {
 
 
     @UiField
+    GwtResource res;
+    @UiField
     FlexTable usersTable;
     @UiField
     TextBox nameField;
@@ -35,6 +39,21 @@ public class UsersViewImpl extends Composite implements UsersView {
 
     public UsersViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
+        res.style().ensureInjected();
+
+        usersTable.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                int rowIndex = usersTable.getCellForEvent(event).getRowIndex();
+
+                int rowCount = usersTable.getRowCount();
+                for (int i = 1; i < rowCount; i++) {
+                    usersTable.getRowFormatter().removeStyleName(i,res.style().tableHead());
+                }
+
+                usersTable.getRowFormatter().setStyleName(rowIndex,res.style().tableHead());
+            }
+        });
     }
 
 
@@ -62,7 +81,7 @@ public class UsersViewImpl extends Composite implements UsersView {
         usersTable.setText(0,6,"Java skills");
         usersTable.setText(0,7,"Tasks count");
 
-        usersTable.getRowFormatter().addStyleName(0,"th");
+        usersTable.getRowFormatter().addStyleName(0,res.style().tableHead());
 
         for (User user : users) {
             int rowCount = usersTable.getRowCount();

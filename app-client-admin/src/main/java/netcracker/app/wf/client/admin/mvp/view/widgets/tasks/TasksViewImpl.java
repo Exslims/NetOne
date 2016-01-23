@@ -8,6 +8,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.client.admin.mvp.view.widgets.TasksView;
 import netcracker.app.wf.back.model.Task;
+import netcracker.app.wf.client.admin.style.GwtResource;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class TasksViewImpl extends Composite implements TasksView {
     private static TasksViewUiBinder ourUiBinder = GWT.create(TasksViewUiBinder.class);
 
     @UiField
+    GwtResource res;
+    @UiField
     FlexTable tasksTable;
     @UiField
     TextBox titleField;
@@ -33,9 +36,12 @@ public class TasksViewImpl extends Composite implements TasksView {
     Button searchByTitleButton;
     @UiField
     Button searchByIdButton;
+    @UiField
+    Label callbackField;
 
     public TasksViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
+        res.style().ensureInjected();
     }
 
     @UiHandler("searchByTitleButton")
@@ -59,7 +65,7 @@ public class TasksViewImpl extends Composite implements TasksView {
         tasksTable.setText(0, 2, "Description");
         tasksTable.setText(0, 3, "Notification Date");
 
-        tasksTable.getRowFormatter().addStyleName(0,"th");
+        tasksTable.getRowFormatter().addStyleName(0,res.style().tableHead());
 
         for (Task task : tasks) {
             int rowCount = tasksTable.getRowCount();
@@ -73,5 +79,10 @@ public class TasksViewImpl extends Composite implements TasksView {
     @Override
     public void setPresenter(TasksPresenter presenter) {
         this.presenter = presenter;
+    }
+
+    @Override
+    public void setMessage(String var) {
+        this.callbackField.setText(var);
     }
 }

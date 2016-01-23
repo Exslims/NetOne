@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.client.admin.mvp.view.widgets.AddTaskView;
 import netcracker.app.wf.back.model.Task;
 import netcracker.app.wf.back.model.User;
+import netcracker.app.wf.client.admin.style.GwtResource;
 
 import java.sql.Timestamp;
 import java.util.HashMap;
@@ -32,6 +33,8 @@ public class AddTaskViewImpl extends Composite implements AddTaskView {
 
     private static AddTaskViewImplUiBinder ourUiBinder = GWT.create(AddTaskViewImplUiBinder.class);
 
+    @UiField
+    GwtResource res;
 
     @UiField
     TextBox titleField;
@@ -51,6 +54,7 @@ public class AddTaskViewImpl extends Composite implements AddTaskView {
 
     public AddTaskViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
+        res.style().ensureInjected();
     }
     @UiHandler("submitButton")
     void onClick(ClickEvent event){
