@@ -2,20 +2,20 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <ui:with field="res" type="netcracker.app.wf.client.admin.style.GwtResource"/>
-    <g:VerticalPanel>
-        <g:HorizontalPanel styleName="{res.style.contentHead}">
-            <g:Label horizontalAlignment="center">Home</g:Label>
-        </g:HorizontalPanel>
+    <g:HTMLPanel>
         <g:VerticalPanel>
-            <g:Label>Используемые технологии:</g:Label>
-            <g:Label>
-                Spring 4.x(Spring IoC, Spring MVC)
-                GWT 2.7
-                RestyGWT
-                RestFull
-                Jackson
-                Log4J
-            </g:Label>
+            <g:VerticalPanel>
+                <g:Label>Используемые технологии:</g:Label>
+                <g:Label>
+                    Spring 4.x(Spring IoC, Spring MVC)
+                    GWT 2.7
+                    RestyGWT
+                    RestFull
+                    Jackson
+                    Log4J
+                    TRASD:AS:D:ASD
+                </g:Label>
+            </g:VerticalPanel>
         </g:VerticalPanel>
-    </g:VerticalPanel>
+    </g:HTMLPanel>
 </ui:UiBinder>

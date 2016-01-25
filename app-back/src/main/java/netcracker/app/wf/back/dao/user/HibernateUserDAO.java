@@ -76,9 +76,7 @@ public class HibernateUserDAO implements UserDAO {
     public void save(User user) {
         logger.trace("Saving  " + user.toString());
         Session currentSession = sessionFactory.getCurrentSession();
-        Transaction transaction = currentSession.beginTransaction();
         currentSession.persist(user);
-        transaction.commit();
         logger.trace("Saved user: " + user.toString());
     }
 

@@ -11,11 +11,6 @@ import java.util.List;
 public interface UsersView extends IsWidget {
     void updateTable(List<User> users);
 
-    /**
-     * set message "Load completed" or "Error while loading"
-     * @param var message
-     */
-    void setMessage(String var);
     void setPresenter(UsersPresenter presenter);
 
     public interface UsersPresenter{

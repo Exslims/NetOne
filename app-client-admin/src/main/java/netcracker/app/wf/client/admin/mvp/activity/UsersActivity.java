@@ -37,13 +37,11 @@ public class UsersActivity extends AbstractActivity implements UsersView.UsersPr
         service.getAllUsers(new MethodCallback<List<User>>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-                view.setMessage("Error while loading, cause: " + throwable.getMessage());
             }
 
             @Override
             public void onSuccess(Method method, List<User> users) {
                 view.updateTable(users);
-                view.setMessage("Loading completed");
             }
         });
     }
@@ -54,13 +52,11 @@ public class UsersActivity extends AbstractActivity implements UsersView.UsersPr
             service.getUserByName(token, new MethodCallback<List<User>>() {
                 @Override
                 public void onFailure(Method method, Throwable throwable) {
-                    view.setMessage("Error while loading, cause: " + throwable.getMessage());
                 }
 
                 @Override
                 public void onSuccess(Method method, List<User> users) {
                     view.updateTable(users);
-                    view.setMessage("Loading completed");
                 }
             });
         }
@@ -72,7 +68,6 @@ public class UsersActivity extends AbstractActivity implements UsersView.UsersPr
             service.getUserById(Integer.parseInt(token), new MethodCallback<User>() {
                 @Override
                 public void onFailure(Method method, Throwable throwable) {
-                    view.setMessage("Error while loading, cause: " + throwable.getMessage());
                 }
 
                 @Override
@@ -80,8 +75,6 @@ public class UsersActivity extends AbstractActivity implements UsersView.UsersPr
                     List<User> users = new ArrayList<User>();
                     users.add(user);
                     view.updateTable(users);
-
-                    view.setMessage("Loading completed");
                 }
             });
         }
@@ -92,13 +85,11 @@ public class UsersActivity extends AbstractActivity implements UsersView.UsersPr
         service.getAllUsers(new MethodCallback<List<User>>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-                view.setMessage("Error while loading, cause: " + throwable.getMessage());
             }
 
             @Override
             public void onSuccess(Method method, List<User> users) {
                 view.updateTable(users);
-                view.setMessage("Loading completed");
             }
         });
     }

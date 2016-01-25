@@ -2,30 +2,31 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <ui:with field="res" type="netcracker.app.wf.client.admin.style.GwtResource"/>
-    <g:VerticalPanel>
-        <g:HorizontalPanel styleName="{res.style.contentHead}">
-            <g:Label horizontalAlignment="center">Add user</g:Label>
-        </g:HorizontalPanel>
-        <g:VerticalPanel>
-            <g:HorizontalPanel>
-                <g:VerticalPanel>
-                    <g:Label>Enter name:</g:Label>
-                    <g:HorizontalPanel>
+    <g:HTMLPanel>
+        <div>
+            <div class="searchContainer">
+                <div class="searchBox">
+                    <div class="block1">
+                        <label>Enter name:</label>
                         <g:TextBox ui:field="nameField"/>
                         <g:Button ui:field="searchByNameButton">Search!</g:Button>
-                    </g:HorizontalPanel>
-                </g:VerticalPanel>
-                <g:VerticalPanel>
-                    <g:Label>Enter id:</g:Label>
-                    <g:HorizontalPanel>
+                    </div>
+                    <div class="block1">
+                        <label>Enter id:</label>
                         <g:TextBox ui:field="idField"/>
                         <g:Button ui:field="searchByIdButton">Search!</g:Button>
+                    </div>
+                    <div class="block1">
                         <g:Button ui:field="showAllButton">Show all!</g:Button>
-                    </g:HorizontalPanel>
-                </g:VerticalPanel>
-            </g:HorizontalPanel>
-            <g:FlexTable ui:field="usersTable" styleName="{res.style.table}"/>
-            <g:Label ui:field="callbackField"/>
-        </g:VerticalPanel>
-    </g:VerticalPanel>
+                    </div>
+                </div>
+            </div>
+            <div class="tasksBox">
+                <p>Tasks target list</p>
+            </div>
+            <div class="scroll">
+                <g:FlexTable ui:field="flexTable"/>
+            </div>
+        </div>
+    </g:HTMLPanel>
 </ui:UiBinder>

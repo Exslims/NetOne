@@ -27,33 +27,25 @@ public class UsersViewImpl extends Composite implements UsersView {
 
 
     @UiField
-    GwtResource res;
+    FlexTable flexTable;
     @UiField
-    FlexTable usersTable;
+    Button searchByNameButton;
+    @UiField
+    Button searchByIdButton;
+    @UiField
+    Button showAllButton;
     @UiField
     TextBox nameField;
     @UiField
     TextBox idField;
-    @UiField
-    Label callbackField;
 
     public UsersViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
-        res.style().ensureInjected();
 
-        usersTable.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                int rowIndex = usersTable.getCellForEvent(event).getRowIndex();
-
-                int rowCount = usersTable.getRowCount();
-                for (int i = 1; i < rowCount; i++) {
-                    usersTable.getRowFormatter().removeStyleName(i,res.style().tableHead());
-                }
-
-                usersTable.getRowFormatter().setStyleName(rowIndex,res.style().tableHead());
-            }
-        });
+        flexTable.addStyleName("flexTable");
+        searchByNameButton.addStyleName("button");
+        searchByIdButton.addStyleName("button");
+        showAllButton.addStyleName("button");
     }
 
 
@@ -71,35 +63,28 @@ public class UsersViewImpl extends Composite implements UsersView {
     }
 
     public void updateTable(List<User> users) {
-        usersTable.removeAllRows();
-        usersTable.setText(0, 0, "Id");
-        usersTable.setText(0, 1, "Login");
-        usersTable.setText(0, 2, "Name");
-        usersTable.setText(0, 3, "Email");
-        usersTable.setText(0,4,"Address");
-        usersTable.setText(0,5,"Country");
-        usersTable.setText(0,6,"Java skills");
-        usersTable.setText(0,7,"Tasks count");
-
-        usersTable.getRowFormatter().addStyleName(0,res.style().tableHead());
+        flexTable.removeAllRows();
+        flexTable.setText(0, 0, "Id");
+        flexTable.setText(0, 1, "Login");
+        flexTable.setText(0, 2, "Name");
+        flexTable.setText(0, 3, "Email");
+        flexTable.setText(0,4,"Address");
+        flexTable.setText(0,5,"Country");
+        flexTable.setText(0,6,"Java skills");
+        flexTable.setText(0,7,"Tasks count");
 
         for (User user : users) {
-            int rowCount = usersTable.getRowCount();
-            usersTable.setText(rowCount + 1,0,String.valueOf(user.getId()));
-            usersTable.setText(rowCount + 1,1,user.getLogin());
-            usersTable.setText(rowCount + 1,2,user.getName());
-            usersTable.setText(rowCount + 1,3,user.getEmail());
-            usersTable.setText(rowCount + 1,4,user.getAddress());
-            usersTable.setText(rowCount + 1,5,user.getCountry());
-            usersTable.setText(rowCount + 1,6,user.getJavaSkills());
-            usersTable.setText(rowCount + 1,7,String.valueOf(user.getTasks().size()));
+            int rowCount = flexTable.getRowCount();
+            flexTable.setText(rowCount + 1,0,String.valueOf(user.getId()));
+            flexTable.setText(rowCount + 1,1,user.getLogin());
+            flexTable.setText(rowCount + 1,2,user.getName());
+            flexTable.setText(rowCount + 1,3,user.getEmail());
+            flexTable.setText(rowCount + 1,4,user.getAddress());
+            flexTable.setText(rowCount + 1,5,user.getCountry());
+            flexTable.setText(rowCount + 1,6,user.getJavaSkills());
+            flexTable.setText(rowCount + 1,7,String.valueOf(user.getTasks().size()));
         }
 
-    }
-
-    @Override
-    public void setMessage(String var) {
-        callbackField.setText(var);
     }
 
     @Override
