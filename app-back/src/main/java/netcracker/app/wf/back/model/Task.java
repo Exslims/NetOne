@@ -4,6 +4,7 @@ package netcracker.app.wf.back.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -13,8 +14,7 @@ public class Task {
     private int id;
     private String title;
     private String description;
-    @JsonIgnore
-    private Timestamp notificationDate;
+    private Date notificationDate;
 
     @JsonIgnore
     private User user;
@@ -49,11 +49,11 @@ public class Task {
     }
 
     @Column(name = "notification_date")
-    public Timestamp getNotificationDate() {
+    public Date getNotificationDate() {
         return notificationDate;
     }
 
-    public void setNotificationDate(Timestamp notificationDate) {
+    public void setNotificationDate(Date notificationDate) {
         this.notificationDate = notificationDate;
     }
 

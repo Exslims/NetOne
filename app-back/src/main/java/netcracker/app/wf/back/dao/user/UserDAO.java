@@ -10,6 +10,9 @@ public interface UserDAO {
     List<User> findByName(String name);
     User findByEmail(String email);
     User findByLogin(String login);
+    List<User> findByLoginLike(String pattern);
+    List<User> findByNameLike(String pattern);
+    List<User> findByEmailLike(String pattern);
     List<User> findAll();
     void save(User user);
     void delete(User user);

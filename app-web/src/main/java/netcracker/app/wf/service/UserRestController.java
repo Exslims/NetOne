@@ -7,7 +7,12 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServlet;
@@ -50,9 +55,27 @@ public class UserRestController extends HttpServlet {
         return this.userDAO.findAll();
     }
 
+    @RequestMapping(value = "/name-like/{pattern}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<User> findByNameLike(@PathVariable String pattern) {
+        return this.userDAO.findByNameLike(pattern);
+    }
+
+    @RequestMapping(value = "/login-like/{pattern}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<User> findByLoginLike(@PathVariable String pattern) {
+        return this.userDAO.findByLoginLike(pattern);
+    }
+
+    @RequestMapping(value = "/email-like/{pattern}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<User> findByEmailLike(@PathVariable String pattern) {
+        return this.userDAO.findByEmailLike(pattern);
+    }
+
     @PostConstruct
     public void init(){
-        logger.trace("User rest controller was initilize");
+        logger.trace(this.getClass().getName() + " was initialized");
     }
 
 }

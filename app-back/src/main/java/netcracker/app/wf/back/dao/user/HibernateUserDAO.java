@@ -65,6 +65,39 @@ public class HibernateUserDAO implements UserDAO {
 
     @Override
     @Transactional(isolation = Isolation.DEFAULT)
+    public List<User> findByLoginLike(String pattern) {
+        logger.trace("Trying to find users with login like " + pattern);
+        Session currentSession = sessionFactory.getCurrentSession();
+        return HibernateUtils.cast(
+                currentSession.createQuery("from User user where user.login like :login")
+                        .setParameter("login", pattern)
+        );
+    }
+
+    @Override
+    @Transactional(isolation = Isolation.DEFAULT)
+    public List<User> findByNameLike(String pattern) {
+        logger.trace("Trying to find users with name like " + pattern);
+        Session currentSession = sessionFactory.getCurrentSession();
+        return HibernateUtils.cast(
+                currentSession.createQuery("from User user where user.name like :name")
+                        .setParameter("name", pattern)
+        );
+    }
+
+    @Override
+    @Transactional(isolation = Isolation.DEFAULT)
+    public List<User> findByEmailLike(String pattern) {
+        logger.trace("Trying to find users with email like " + pattern);
+        Session currentSession = sessionFactory.getCurrentSession();
+        return HibernateUtils.cast(
+                currentSession.createQuery("from User user where user.email like :email")
+                        .setParameter("email" , pattern)
+        );
+    }
+
+    @Override
+    @Transactional(isolation = Isolation.DEFAULT)
     public List<User> findAll() {
         logger.trace("Selecting all users...");
         Session currentSession = sessionFactory.getCurrentSession();

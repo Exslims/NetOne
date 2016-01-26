@@ -1,7 +1,6 @@
 package netcracker.app.wf.back.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -15,7 +14,6 @@ public class User {
 
     private int id;
     private String login;
-    @JsonIgnore
     private String password;
     private String name;
     private String email;
