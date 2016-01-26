@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="tasksBox">
-                <p>Tasks target list</p>
+                <g:VerticalPanel ui:field="accordion"/>
             </div>
             <div class="scroll">
                 <g:FlexTable ui:field="flexTable"/>

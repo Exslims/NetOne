@@ -12,6 +12,7 @@ body, html {
 }
 a{
     text-decoration: none;
+    color: black;
 }
 
 .container {
@@ -27,8 +28,10 @@ a{
 .tutorial .tasksBox{
     background: #fffdfd;
     float: right;
+    overflow: scroll;
+    overflow-x: hidden;
     height: 100%;
-    width: 39%;
+    width: 29%;
 }
 .tutorial input[type=text]{
     border: 1px solid #e2e2f1;
@@ -38,7 +41,7 @@ a{
 .tutorial .button{
     display: inline-block;
     position: relative;
-    background: #3d385a;
+    background: #5B5F97;
     border: none;
     padding: 0.5em 1em 0.5em 1em;
     color: white;
@@ -52,7 +55,7 @@ a{
 .tutorial .slider .searchContainer{
     height:10%;
     float: left;
-    width: 60%;
+    width: 70%;
     margin: 0 0 0.5em 0;
 }
 .tutorial .slider .searchContainer .searchBox{
@@ -75,7 +78,7 @@ a{
     overflow-x: hidden;
     float: left;
     height: 89%;
-    width: 60%;
+    width: 70%;
 }
 .tutorial .slider .flexTable{
     font-family: "Open Sans", sans-serif;
@@ -83,16 +86,9 @@ a{
     border-radius: 0.25em;
     border-collapse: collapse;
     overflow: scroll;
+    cursor: pointer;
     width: 100%;
     max-height: 100%;
-}
-.tutorial .slider .flexTable th{
-    border-bottom: 1px solid #364043;
-    color: #E2B842;
-    font-size: 0.85em;
-    font-weight: 600;
-    padding: 0.5em 1em;
-    text-align: left;
 }
 .tutorial .slider .flexTable td{
     font-weight: 400;
@@ -101,6 +97,9 @@ a{
 }
 .tutorial .slider .flexTable tbody tr{
     transition: background 0.25s ease;
+}
+.tutorial .slider .flexTable .selectedItem{
+    background: #e6efff;
 }
 .tutorial .slider .flexTable tbody tr:hover{
     background: #e6efff;
@@ -172,4 +171,35 @@ a{
 }
 .tutorial ul li:hover ul li:hover span {
     background-color: #4d85ea;
+}
+
+
+.tutorial .slider .accordion {
+    width: 100% ;
+    background: #f4f4f4;
+    font-family: "Open Sans", sans-serif;
+}
+.tutorial .slider .accordion .accordion__title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 1rem 1.5rem;
+    background: #5B5F97;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+
+}
+.tutorial .slider .accordion .accordion__title:hover {
+    background: #484b77;
+}
+.tutorial .slider .accordion .accordion__copy {
+    display: block;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    color: gray;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    font-weight: 500;
 }

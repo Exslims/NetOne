@@ -8,11 +8,13 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
+import netcracker.app.wf.back.model.Task;
 import netcracker.app.wf.client.admin.mvp.view.widgets.UsersView;
 import netcracker.app.wf.back.model.User;
 import netcracker.app.wf.client.admin.style.GwtResource;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by ���������� on 02.12.2015.
@@ -26,8 +28,12 @@ public class UsersViewImpl extends Composite implements UsersView {
     private static UsersViewUiBinder ourUiBinder = GWT.create(UsersViewUiBinder.class);
 
 
+    List<User> currentUserList;
+
     @UiField
     FlexTable flexTable;
+    @UiField
+    VerticalPanel accordion;
     @UiField
     Button searchByNameButton;
     @UiField
@@ -39,13 +45,15 @@ public class UsersViewImpl extends Composite implements UsersView {
     @UiField
     TextBox idField;
 
+    @SuppressWarnings("all")
     public UsersViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
 
-        flexTable.addStyleName("flexTable");
-        searchByNameButton.addStyleName("button");
-        searchByIdButton.addStyleName("button");
-        showAllButton.addStyleName("button");
+        flexTable.setStyleName("flexTable");
+        searchByNameButton.setStyleName("button");
+        searchByIdButton.setStyleName("button");
+        showAllButton.setStyleName("button");
+        accordion.setStyleName("accordion");
     }
 
 
@@ -61,6 +69,14 @@ public class UsersViewImpl extends Composite implements UsersView {
     void onClickAll(ClickEvent event){
         presenter.showAll();
     }
+    @UiHandler("flexTable")
+    void onClickTable(ClickEvent event){
+        int rowIndex = flexTable.getCellForEvent(event).getRowIndex();
+        showAllButton.setText(String.valueOf(rowIndex));
+        if(rowIndex != 0){
+            fillAccordion(rowIndex);
+        }
+    }
 
     public void updateTable(List<User> users) {
         flexTable.removeAllRows();
@@ -75,21 +91,55 @@ public class UsersViewImpl extends Composite implements UsersView {
 
         for (User user : users) {
             int rowCount = flexTable.getRowCount();
-            flexTable.setText(rowCount + 1,0,String.valueOf(user.getId()));
-            flexTable.setText(rowCount + 1,1,user.getLogin());
-            flexTable.setText(rowCount + 1,2,user.getName());
-            flexTable.setText(rowCount + 1,3,user.getEmail());
-            flexTable.setText(rowCount + 1,4,user.getAddress());
-            flexTable.setText(rowCount + 1,5,user.getCountry());
-            flexTable.setText(rowCount + 1,6,user.getJavaSkills());
-            flexTable.setText(rowCount + 1,7,String.valueOf(user.getTasks().size()));
+            flexTable.setText(rowCount,0,String.valueOf(user.getId()));
+            flexTable.setText(rowCount,1,user.getLogin());
+            flexTable.setText(rowCount,2,user.getName());
+            flexTable.setText(rowCount,3,user.getEmail());
+            flexTable.setText(rowCount,4,user.getAddress());
+            flexTable.setText(rowCount,5,user.getCountry());
+            flexTable.setText(rowCount,6,user.getJavaSkills());
+            flexTable.setText(rowCount,7,String.valueOf(user.getTasks().size()));
         }
 
+        currentUserList = users;
     }
 
     @Override
     public void setPresenter(UsersPresenter presenter) {
         this.presenter = presenter;
     }
+
+    @SuppressWarnings("all")
+    private void fillAccordion(int userIndex){
+        accordion.clear();
+        Set<Task> tasks = currentUserList.get(userIndex - 1).getTasks();
+        for (Task task :tasks) {
+            VerticalPanel vPanel = new VerticalPanel();
+            vPanel.addStyleName("accordion-item");
+
+            Label title = new Label(task.getTitle());
+            title.addStyleName("accordion__title");
+
+            Label content = new Label(task.getDescription());
+            content.addStyleName("accordion__copy");
+
+            vPanel.add(title);
+            vPanel.add(content);
+
+            accordion.add(vPanel);
+        }
+    }
+
+//    public static native void test()/*-{
+//        $wnd.alert("inside");
+//        var $title = $wnd('.js-title');
+//        var copy   = '.js-copy';
+//
+//        $title.click(function () {
+//            $wnd.next(copy).slideToggle();
+//            $wnd.parent().siblings().children().next().slideUp();
+//            return false;
+//        });
+//    }-*/;
 
 }

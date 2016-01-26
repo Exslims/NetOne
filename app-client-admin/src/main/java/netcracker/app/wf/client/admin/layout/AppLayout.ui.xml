@@ -32,18 +32,5 @@
         </div>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'/>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
-        <!--<g:HorizontalPanel>-->
-            <!--<g:VerticalPanel styleName="{res.style.menuWidget}">-->
-                <!--<g:HorizontalPanel styleName="{res.style.menuHead}">-->
-                    <!--<g:Label horizontalAlignment="center">Menu</g:Label>-->
-                <!--</g:HorizontalPanel>-->
-                    <!--<g:Hyperlink targetHistoryToken="home:" styleName="{res.style.menuLink}">Home</g:Hyperlink>-->
-                    <!--<g:Hyperlink targetHistoryToken="users:" styleName="{res.style.menuLink}">Users</g:Hyperlink>-->
-                    <!--<g:Hyperlink targetHistoryToken="tasks:" styleName="{res.style.menuLink}">Tasks</g:Hyperlink>-->
-                    <!--<g:Hyperlink targetHistoryToken="adduser:" styleName="{res.style.menuLink}">Add User</g:Hyperlink>-->
-                    <!--<g:Hyperlink targetHistoryToken="addtask:" styleName="{res.style.menuLink}">Add Task</g:Hyperlink>-->
-            <!--</g:VerticalPanel>-->
-            <!--<g:SimplePanel ui:field="appContent" styleName="{res.style.contentWidget}"/>-->
-        <!--</g:HorizontalPanel>-->
     </g:HTMLPanel>
 </ui:UiBinder>
