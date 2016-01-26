@@ -14,6 +14,7 @@ public class Task {
     private int id;
     private String title;
     private String description;
+    @JsonIgnore
     private Date notificationDate;
 
     @JsonIgnore

@@ -179,11 +179,16 @@ a{
     background: #f4f4f4;
     font-family: "Open Sans", sans-serif;
 }
+.tutorial .slider .accordion .accordion_header{
+    text-align: center;
+    width: 100%;
+    /*padding: 0.7rem 1.5rem;*/
+}
 .tutorial .slider .accordion .accordion__title {
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 1rem 1.5rem;
+    padding: 0.7rem 1.5rem;
     background: #5B5F97;
     width: 100%;
     color: white;

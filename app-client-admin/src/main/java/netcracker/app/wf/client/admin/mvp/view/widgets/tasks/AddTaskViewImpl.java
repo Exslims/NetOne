@@ -11,6 +11,7 @@ import netcracker.app.wf.back.model.Task;
 import netcracker.app.wf.back.model.User;
 import netcracker.app.wf.client.admin.style.GwtResource;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -61,7 +62,7 @@ public class AddTaskViewImpl extends Composite implements AddTaskView {
         Task task = new Task();
         task.setTitle(titleField.getText());
         task.setDescription(descField.getText());
-        task.setNotificationDate(new Timestamp(System.currentTimeMillis()));
+        task.setNotificationDate(new Date(System.currentTimeMillis()));
 
         User user = usersMap.get(listField.getSelectedValue());
         user.addTask(task);

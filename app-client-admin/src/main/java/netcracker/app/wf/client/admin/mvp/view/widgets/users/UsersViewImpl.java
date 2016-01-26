@@ -72,7 +72,6 @@ public class UsersViewImpl extends Composite implements UsersView {
     @UiHandler("flexTable")
     void onClickTable(ClickEvent event){
         int rowIndex = flexTable.getCellForEvent(event).getRowIndex();
-        showAllButton.setText(String.valueOf(rowIndex));
         if(rowIndex != 0){
             fillAccordion(rowIndex);
         }
@@ -112,10 +111,14 @@ public class UsersViewImpl extends Composite implements UsersView {
     @SuppressWarnings("all")
     private void fillAccordion(int userIndex){
         accordion.clear();
+        Label head = new Label(currentUserList.get(userIndex-1).getLogin() + " tasks");
+        head.setStyleName("accordion_header");
+        accordion.add(head);
+
         Set<Task> tasks = currentUserList.get(userIndex - 1).getTasks();
         for (Task task :tasks) {
             VerticalPanel vPanel = new VerticalPanel();
-            vPanel.addStyleName("accordion-item");
+            vPanel.addStyleName("accordion");
 
             Label title = new Label(task.getTitle());
             title.addStyleName("accordion__title");
