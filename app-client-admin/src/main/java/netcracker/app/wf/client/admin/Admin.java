@@ -16,7 +16,7 @@ import org.fusesource.restygwt.client.Defaults;
 /**
  * Created by ���������� on 01.12.2015.
  */
-public class Example implements EntryPoint {
+public class Admin implements EntryPoint {
     private SimplePanel containerWidget;
     private HomePlace defaultPlace = new HomePlace();
     public void onModuleLoad() {

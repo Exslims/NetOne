@@ -12,7 +12,7 @@
     <inherits name="com.google.gwt.place.Place"/>
     <inherits name="com.google.gwt.activity.Activity"/>
 
-    <entry-point class='netcracker.app.wf.client.admin.Example'/>
+    <entry-point class='netcracker.app.wf.client.admin.Admin'/>
 
     <replace-with class="netcracker.app.wf.client.admin.ClientFactoryImpl">
         <when-type-is class="netcracker.app.wf.client.admin.ClientFactory"/>

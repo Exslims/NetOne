@@ -1,7 +1,6 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <ui:with field="res" type="netcracker.app.wf.client.admin.style.GwtResource"/>
     <g:HTMLPanel>
         <div class="container">
             <div class="tutorial">
@@ -32,7 +31,8 @@
                         <!--<li>Contact</li>-->
                     </ul>
                     <div class="loginBox">
-                        <p>Hello: Admin   <a href="/view/logout/">Logout</a></p>
+                        <g:Label ui:field="loggedUser"/>
+                        <a href="/view/logout/">Logout</a>
                     </div>
                 </div>
                 <div class="slider">

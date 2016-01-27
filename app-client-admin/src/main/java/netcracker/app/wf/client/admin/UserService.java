@@ -44,4 +44,7 @@ public interface UserService extends RestService {
     @GET
     @Path("/email-like/{pattern}")
     public void getUserByEmailLike(@PathParam("pattern") String pattern, MethodCallback<List<User>> callback);
+    @GET
+    @Path("/logged-user")
+    public void getLoggedUser(MethodCallback<User> callback);
 }
