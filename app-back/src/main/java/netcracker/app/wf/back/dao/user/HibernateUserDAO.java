@@ -69,7 +69,7 @@ public class HibernateUserDAO implements UserDAO {
         Session currentSession = sessionFactory.getCurrentSession();
         return HibernateUtils.cast(
                 currentSession.createQuery("from User user where user.login like :login")
-                        .setParameter("login", pattern)
+                        .setParameter("login", "%" + pattern + "%")
         );
     }
 
@@ -80,7 +80,7 @@ public class HibernateUserDAO implements UserDAO {
         Session currentSession = sessionFactory.getCurrentSession();
         return HibernateUtils.cast(
                 currentSession.createQuery("from User user where user.name like :name")
-                        .setParameter("name", pattern)
+                        .setParameter("name", "%" + pattern + "%")
         );
     }
 
@@ -91,7 +91,7 @@ public class HibernateUserDAO implements UserDAO {
         Session currentSession = sessionFactory.getCurrentSession();
         return HibernateUtils.cast(
                 currentSession.createQuery("from User user where user.email like :email")
-                        .setParameter("email" , pattern)
+                        .setParameter("email" , "%" + pattern + "%")
         );
     }
 
@@ -117,10 +117,7 @@ public class HibernateUserDAO implements UserDAO {
     public void delete(User user) {
         logger.trace("Removing " + user.toString());
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession
-                .createQuery("delete User user where user.id = :id ")
-                .setParameter("id" , user.getId())
-                .executeUpdate();
+        currentSession.delete(user);
         logger.trace("User was removed successful");
     }
 
