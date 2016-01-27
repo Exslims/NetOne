@@ -3,10 +3,13 @@ package netcracker.app.wf.service;
 
 import netcracker.app.wf.back.dao.user.UserDAO;
 import netcracker.app.wf.back.model.User;
+import netcracker.app.wf.security.AppUserDetails;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,6 +63,15 @@ public class UserRestController extends HttpServlet {
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
     public List<User> findAll() {
         return this.userDAO.findAll();
+    }
+
+    @RequestMapping(value = "/logged-user", method = RequestMethod.GET, produces = "application/json")
+    public User loggedUser() {
+        AppUserDetails details = (AppUserDetails)SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+        return details.getCurrentUser();
     }
 
     @RequestMapping(value = "/name-like/{pattern}", method = RequestMethod.GET, produces = "application/json")
