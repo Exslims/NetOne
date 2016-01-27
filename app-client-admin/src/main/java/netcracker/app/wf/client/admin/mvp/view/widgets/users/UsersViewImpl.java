@@ -9,6 +9,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.*;
+import netcracker.app.wf.back.model.Role;
 import netcracker.app.wf.back.model.Task;
 import netcracker.app.wf.client.admin.mvp.view.widgets.UsersView;
 import netcracker.app.wf.back.model.User;
@@ -87,7 +88,8 @@ public class UsersViewImpl extends Composite implements UsersView {
         flexTable.setText(0,4,"Country");
         flexTable.setText(0,5,"Java skills");
         flexTable.setText(0,6,"Tasks count");
-        flexTable.setText(0,7,"");
+        flexTable.setText(0,7,"Role");
+        flexTable.setText(0,8,"");
 
         for (final User user : users) {
             int rowCount = flexTable.getRowCount();
@@ -98,6 +100,14 @@ public class UsersViewImpl extends Composite implements UsersView {
             flexTable.setText(rowCount,4,user.getCountry());
             flexTable.setText(rowCount,5,user.getJavaSkills());
             flexTable.setText(rowCount,6,String.valueOf(user.getTasks().size()));
+
+            Set<Role> userRoles = user.getRoles();
+            String roleStr = "";
+            for (Role role :userRoles) {
+                roleStr += role.getName() + " ";
+            }
+
+            flexTable.setText(rowCount,7,roleStr);
 
             HorizontalPanel utilsPanel = new HorizontalPanel();
 
@@ -123,7 +133,7 @@ public class UsersViewImpl extends Composite implements UsersView {
             });
 //            utilsPanel.add(editButton);
             utilsPanel.add(removeButton);
-            flexTable.setWidget(rowCount,7,utilsPanel);
+            flexTable.setWidget(rowCount,8,utilsPanel);
         }
 
         currentUserList = users;

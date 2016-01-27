@@ -3,19 +3,14 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <ui:with field="res" type="netcracker.app.wf.client.admin.style.GwtResource"/>
     <g:HTMLPanel>
-        <g:VerticalPanel>
-            <g:VerticalPanel>
-                <g:Label>Используемые технологии:</g:Label>
-                <g:Label>
-                    Spring 4.x(Spring IoC, Spring MVC)
-                    GWT 2.7
-                    RestyGWT
-                    RestFull
-                    Jackson
-                    Log4J
-                    TRASD:AS:D:ASD
-                </g:Label>
-            </g:VerticalPanel>
-        </g:VerticalPanel>
+        <div class="information">
+            <h1>Используемые технологии</h1>
+            <p> Spring 4.x(Spring IoC, Spring MVC)
+                GWT 2.7
+                RestyGWT
+                RestFull
+                Jackson
+                Log4J</p>
+        </div>
     </g:HTMLPanel>
 </ui:UiBinder>

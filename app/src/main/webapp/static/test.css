@@ -106,6 +106,7 @@ a{
 }
 .tutorial .information {
     width: 100%;
+    background: #ffffff ;
     padding: 5px;
     margin-bottom: 30px;
     font-family: "Open Sans", sans-serif;
