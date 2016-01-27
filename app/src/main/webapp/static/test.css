@@ -40,7 +40,6 @@ a{
 }
 .tutorial .slider .button{
     display: inline-block;
-    position: relative;
     background: #5B5F97;
     border: none;
     padding: 0.5em 1em 0.5em 1em;
@@ -70,7 +69,6 @@ a{
     color: #333;
     display: inline-block;
     padding: 15px;
-    position: relative;
 }
 .tutorial .slider .scroll{
     overflow: auto;
@@ -127,6 +125,7 @@ a{
 }
 .tutorial ul {
     font-size: 0;
+    position: relative;
     list-style-type: none;
 }
 .tutorial ul li {
