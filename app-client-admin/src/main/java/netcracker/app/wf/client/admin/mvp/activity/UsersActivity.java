@@ -3,6 +3,7 @@ package netcracker.app.wf.client.admin.mvp.activity;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import netcracker.app.wf.client.admin.ClientFactory;
 import netcracker.app.wf.client.admin.UserService;
@@ -63,22 +64,70 @@ public class UsersActivity extends AbstractActivity implements UsersView.UsersPr
     }
 
     @Override
-    public void updateTableById(String token) {
+    public void updateTableByNameLike(String token) {
         if(!token.equals("")) {
-            service.getUserById(Integer.parseInt(token), new MethodCallback<User>() {
+            service.getUserByNameLike(token, new MethodCallback<List<User>>() {
                 @Override
                 public void onFailure(Method method, Throwable throwable) {
+
                 }
 
                 @Override
-                public void onSuccess(Method method, User user) {
-                    List<User> users = new ArrayList<User>();
-                    users.add(user);
+                public void onSuccess(Method method, List<User> users) {
                     view.updateTable(users);
                 }
             });
         }
     }
+
+    @Override
+    public void updateTableByLoginLike(String token) {
+        if(!token.equals("")) {
+            service.getUserByLoginLike(token, new MethodCallback<List<User>>() {
+                @Override
+                public void onFailure(Method method, Throwable throwable) {
+
+                }
+
+                @Override
+                public void onSuccess(Method method, List<User> users) {
+                    view.updateTable(users);
+                }
+            });
+        }
+    }
+
+    @Override
+    public void updateTableByEmailLike(String token) {
+        if(!token.equals("")) {
+            service.getUserByEmailLike(token, new MethodCallback<List<User>>() {
+                @Override
+                public void onFailure(Method method, Throwable throwable) {
+
+                }
+
+                @Override
+                public void onSuccess(Method method, List<User> users) {
+                    view.updateTable(users);
+                }
+            });
+        }
+    }
+
+    @Override
+    public void deleteUser(User user) {
+        service.deleteUser(user, new MethodCallback<Void>() {
+            @Override
+            public void onFailure(Method method, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onSuccess(Method method, Void aVoid) {
+            }
+        });
+    }
+
 
     @Override
     public void showAll() {

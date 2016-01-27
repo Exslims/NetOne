@@ -12,9 +12,9 @@
                         <g:Button ui:field="searchByNameButton">Search!</g:Button>
                     </div>
                     <div class="block1">
-                        <label>Enter id:</label>
-                        <g:TextBox ui:field="idField"/>
-                        <g:Button ui:field="searchByIdButton">Search!</g:Button>
+                        <label>Enter Login:</label>
+                        <g:TextBox ui:field="loginField"/>
+                        <g:Button ui:field="searchByLoginButton">Search!</g:Button>
                     </div>
                     <div class="block1">
                         <g:Button ui:field="showAllButton">Show all!</g:Button>

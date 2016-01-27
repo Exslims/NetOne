@@ -15,7 +15,10 @@ public interface UsersView extends IsWidget {
 
     public interface UsersPresenter{
         void updateTableByName(String token);
-        void updateTableById(String token);
+        void updateTableByNameLike(String token);
+        void updateTableByLoginLike(String token);
+        void updateTableByEmailLike(String token);
+        void deleteUser(User user);
         void showAll();
     }
 }

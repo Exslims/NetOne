@@ -17,19 +17,31 @@ import java.util.List;
 @Path("/service/users")
 public interface UserService extends RestService {
 
+    @POST
+    @Path("/update-user")
+    public void updateUser(User user, MethodCallback<Void> callback);
+    @POST
+    @Path("/delete-user")
+    public void deleteUser(User user, MethodCallback<Void> callback);
+    @POST
+    @Path("/add-user")
+    public void addUser(User user, MethodCallback<Void> callback);
     @GET
-    @Path("/all")
-    public void getAllUsers(MethodCallback<List<User>> callback);
+    @Path("/id/{id}")
+    public void getUserById(@PathParam("id") int id, MethodCallback<User> callback);
     @GET
     @Path("/name/{name}")
     public void getUserByName(@PathParam("name") String name, MethodCallback<List<User>> callback);
     @GET
-    @Path("/id/{id}")
-    public void getUserById(@PathParam("id") int id, MethodCallback<User> callback);
-    @POST
-    @Path("/add-user")
-    public void addUser(User user, MethodCallback<Void> callback);
-    @POST
-    @Path("/update-user")
-    public void updateUser(User user, MethodCallback<Void> callback);
+    @Path("/all")
+    public void getAllUsers(MethodCallback<List<User>> callback);
+    @GET
+    @Path("/name-like/{pattern}")
+    public void getUserByNameLike(@PathParam("pattern") String pattern, MethodCallback<List<User>> callback);
+    @GET
+    @Path("/login-like/{pattern}")
+    public void getUserByLoginLike(@PathParam("pattern") String pattern, MethodCallback<List<User>> callback);
+    @GET
+    @Path("/email-like/{pattern}")
+    public void getUserByEmailLike(@PathParam("pattern") String pattern, MethodCallback<List<User>> callback);
 }

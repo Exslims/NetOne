@@ -7,6 +7,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.back.model.Task;
 import netcracker.app.wf.client.admin.mvp.view.widgets.UsersView;
@@ -37,13 +38,13 @@ public class UsersViewImpl extends Composite implements UsersView {
     @UiField
     Button searchByNameButton;
     @UiField
-    Button searchByIdButton;
+    Button searchByLoginButton;
     @UiField
     Button showAllButton;
     @UiField
     TextBox nameField;
     @UiField
-    TextBox idField;
+    TextBox loginField;
 
     @SuppressWarnings("all")
     public UsersViewImpl() {
@@ -51,7 +52,7 @@ public class UsersViewImpl extends Composite implements UsersView {
 
         flexTable.setStyleName("flexTable");
         searchByNameButton.setStyleName("button");
-        searchByIdButton.setStyleName("button");
+        searchByLoginButton.setStyleName("button");
         showAllButton.setStyleName("button");
         accordion.setStyleName("accordion");
     }
@@ -59,11 +60,11 @@ public class UsersViewImpl extends Composite implements UsersView {
 
     @UiHandler("searchByNameButton")
     void onClickName(ClickEvent event){
-        presenter.updateTableByName(nameField.getText());
+        presenter.updateTableByNameLike(nameField.getText());
     }
-    @UiHandler("searchByIdButton")
+    @UiHandler("searchByLoginButton")
     void onClickId(ClickEvent event){
-        presenter.updateTableById(idField.getText());
+        presenter.updateTableByLoginLike(loginField.getText());
     }
     @UiHandler("showAllButton")
     void onClickAll(ClickEvent event){
@@ -79,25 +80,50 @@ public class UsersViewImpl extends Composite implements UsersView {
 
     public void updateTable(List<User> users) {
         flexTable.removeAllRows();
-        flexTable.setText(0, 0, "Id");
-        flexTable.setText(0, 1, "Login");
-        flexTable.setText(0, 2, "Name");
-        flexTable.setText(0, 3, "Email");
-        flexTable.setText(0,4,"Address");
-        flexTable.setText(0,5,"Country");
-        flexTable.setText(0,6,"Java skills");
-        flexTable.setText(0,7,"Tasks count");
+        flexTable.setText(0, 0, "Login");
+        flexTable.setText(0, 1, "Name");
+        flexTable.setText(0, 2, "Email");
+        flexTable.setText(0,3,"Address");
+        flexTable.setText(0,4,"Country");
+        flexTable.setText(0,5,"Java skills");
+        flexTable.setText(0,6,"Tasks count");
+        flexTable.setText(0,7,"");
 
-        for (User user : users) {
+        for (final User user : users) {
             int rowCount = flexTable.getRowCount();
-            flexTable.setText(rowCount,0,String.valueOf(user.getId()));
-            flexTable.setText(rowCount,1,user.getLogin());
-            flexTable.setText(rowCount,2,user.getName());
-            flexTable.setText(rowCount,3,user.getEmail());
-            flexTable.setText(rowCount,4,user.getAddress());
-            flexTable.setText(rowCount,5,user.getCountry());
-            flexTable.setText(rowCount,6,user.getJavaSkills());
-            flexTable.setText(rowCount,7,String.valueOf(user.getTasks().size()));
+            flexTable.setText(rowCount,0,user.getLogin());
+            flexTable.setText(rowCount,1,user.getName());
+            flexTable.setText(rowCount,2,user.getEmail());
+            flexTable.setText(rowCount,3,user.getAddress());
+            flexTable.setText(rowCount,4,user.getCountry());
+            flexTable.setText(rowCount,5,user.getJavaSkills());
+            flexTable.setText(rowCount,6,String.valueOf(user.getTasks().size()));
+
+            HorizontalPanel utilsPanel = new HorizontalPanel();
+
+//
+//            Button editButton = new Button("Edit");
+//            editButton.setStyleName("button");
+//            History.encodeHistoryToken("edit-user:");
+//            editButton.addClickHandler(new ClickHandler() {
+//                @Override
+//                public void onClick(ClickEvent event) {
+//                    History.newItem("edit-user");
+//                }
+//            });
+
+
+            Button removeButton = new Button("Delete");
+            removeButton.setStyleName("button");
+            removeButton.addClickHandler(new ClickHandler() {
+                @Override
+                public void onClick(ClickEvent event) {
+                    presenter.deleteUser(user);
+                }
+            });
+//            utilsPanel.add(editButton);
+            utilsPanel.add(removeButton);
+            flexTable.setWidget(rowCount,7,utilsPanel);
         }
 
         currentUserList = users;
@@ -111,7 +137,7 @@ public class UsersViewImpl extends Composite implements UsersView {
     @SuppressWarnings("all")
     private void fillAccordion(int userIndex){
         accordion.clear();
-        Label head = new Label(currentUserList.get(userIndex-1).getLogin() + " tasks");
+        Label head = new Label(currentUserList.get(userIndex-1).getLogin() + "'s tasks");
         head.setStyleName("accordion_header");
         accordion.add(head);
 
@@ -133,16 +159,16 @@ public class UsersViewImpl extends Composite implements UsersView {
         }
     }
 
-//    public static native void test()/*-{
-//        $wnd.alert("inside");
-//        var $title = $wnd('.js-title');
-//        var copy   = '.js-copy';
-//
-//        $title.click(function () {
-//            $wnd.next(copy).slideToggle();
-//            $wnd.parent().siblings().children().next().slideUp();
-//            return false;
-//        });
-//    }-*/;
+    public static native void test()/*-{
+        $wnd.alert("inside");
+        var $title = $wnd('.js-title');
+        var copy   = '.js-copy';
+
+        $title.click(function () {
+            $wnd.next(copy).slideToggle();
+            $wnd.parent().siblings().children().next().slideUp();
+            return false;
+        });
+    }-*/;
 
 }
