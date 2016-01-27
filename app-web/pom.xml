@@ -24,7 +24,11 @@
             <artifactId>app-back</artifactId>
             <version>${project.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>netcracker.app.wf</groupId>
+            <artifactId>app-security</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
