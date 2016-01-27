@@ -7,7 +7,7 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/scheduler_db" />
-        <property name="username" value="root1" />
+        <property name="username" value="root" />
         <property name="password" value="123" />
     </bean>
 
@@ -22,7 +22,6 @@
             </list>
         </property>
     </bean>
-    <!---->
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
