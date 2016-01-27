@@ -28,7 +28,6 @@ public class AppLayout extends Composite {
         initWidget(ourUiBinder.createAndBindUi(this));
         this.clientFactory = clientFactory;
         res.style().ensureInjected();
-
     }
 
     public SimplePanel getAppContentHolder(){

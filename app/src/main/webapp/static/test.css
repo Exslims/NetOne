@@ -31,7 +31,7 @@ a{
     overflow: scroll;
     overflow-x: hidden;
     height: 100%;
-    width: 19%;
+    width: 24%;
 }
 .tutorial .slider  input[type=text]{
     border: 1px solid #e2e2f1;
@@ -58,7 +58,7 @@ a{
     overflow: scroll;
     overflow-y: auto;
     overflow-x: hidden;
-    width: 80%;
+    width: 75%;
     margin: 0 0 0.5em 0;
 }
 .tutorial .slider .block1{
@@ -74,7 +74,7 @@ a{
     overflow: auto;
     float: left;
     height: 89%;
-    width: 80%;
+    width: 75%;
 }
 .tutorial .slider .flexTable{
     font-family: "Open Sans", sans-serif;
@@ -123,9 +123,24 @@ a{
 .tutorial .information p {
     padding: 10px 0px;
 }
+.tutorial .menuBox{
+    width: 100%;
+    height: 9%;
+}
+.tutorial .loginBox{
+    font-family: "Open Sans", sans-serif;
+    font-size: 1rem;
+    float: left;
+    text-align: right;
+    font-weight: 400;
+    width: 30%;
+    color: #333;
+    padding: 30px;
+}
 .tutorial ul {
     font-size: 0;
-    position: relative;
+    float: left;
+    width: 70%;
     list-style-type: none;
 }
 .tutorial ul li {
