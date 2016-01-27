@@ -9,7 +9,6 @@ import netcracker.app.wf.back.model.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
@@ -118,7 +117,10 @@ public class HibernateUserDAO implements UserDAO {
     public void delete(User user) {
         logger.trace("Removing " + user.toString());
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.update(user);
+        currentSession
+                .createQuery("delete User user where user.id = :id ")
+                .setParameter("id" , user.getId())
+                .executeUpdate();
         logger.trace("User was removed successful");
     }
 

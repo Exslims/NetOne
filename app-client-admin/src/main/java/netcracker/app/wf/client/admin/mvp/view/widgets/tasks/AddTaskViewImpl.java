@@ -82,7 +82,7 @@ public class AddTaskViewImpl extends Composite implements AddTaskView {
     public void setMessageType(boolean var) {
         if(var){
             succesPanel.setVisible(true);
-        }else {
+        } else {
             errorPanel.setVisible(true);
         }
     }

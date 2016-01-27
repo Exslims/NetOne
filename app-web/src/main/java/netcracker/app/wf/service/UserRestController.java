@@ -32,6 +32,12 @@ public class UserRestController extends HttpServlet {
         this.userDAO.update(user);
     }
 
+    @RequestMapping(value = "/delete-user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deleteUser(@RequestBody User user) {
+        this.userDAO.delete(user);
+    }
+
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = "/add-user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addUser(@RequestBody User user) {
