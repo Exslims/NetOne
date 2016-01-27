@@ -23,6 +23,7 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserRestController extends HttpServlet {
     Logger logger = Logger.getLogger(UserRestController.class);
+
     @Autowired
     private volatile UserDAO userDAO;
 
