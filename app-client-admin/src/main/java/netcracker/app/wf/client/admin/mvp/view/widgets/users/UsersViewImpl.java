@@ -92,7 +92,7 @@ public class UsersViewImpl extends Composite implements UsersView {
         flexTable.setText(0,8,"");
 
         for (final User user : users) {
-            int rowCount = flexTable.getRowCount();
+            final int rowCount = flexTable.getRowCount();
             flexTable.setText(rowCount,0,user.getLogin());
             flexTable.setText(rowCount,1,user.getName());
             flexTable.setText(rowCount,2,user.getEmail());
@@ -129,6 +129,7 @@ public class UsersViewImpl extends Composite implements UsersView {
                 @Override
                 public void onClick(ClickEvent event) {
                     presenter.deleteUser(user);
+                    flexTable.removeRow(rowCount);
                 }
             });
 //            utilsPanel.add(editButton);
@@ -169,16 +170,16 @@ public class UsersViewImpl extends Composite implements UsersView {
         }
     }
 
-    public static native void test()/*-{
-        $wnd.alert("inside");
-        var $title = $wnd('.js-title');
-        var copy   = '.js-copy';
-
-        $title.click(function () {
-            $wnd.next(copy).slideToggle();
-            $wnd.parent().siblings().children().next().slideUp();
-            return false;
-        });
-    }-*/;
+//    public static native void test()/*-{
+//        $wnd.alert("inside");
+//        var $title = $wnd('.js-title');
+//        var copy   = '.js-copy';
+//
+//        $title.click(function () {
+//            $wnd.next(copy).slideToggle();
+//            $wnd.parent().siblings().children().next().slideUp();
+//            return false;
+//        });
+//    }-*/;
 
 }

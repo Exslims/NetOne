@@ -6,11 +6,19 @@
         <div class="container">
             <div class="tutorial">
                 <ul>
-                    <li><g:Hyperlink targetHistoryToken="home:">Home</g:Hyperlink></li>
-                    <li><g:Hyperlink targetHistoryToken="users:">Users</g:Hyperlink></li>
-                    <li><g:Hyperlink targetHistoryToken="tasks:">Tasks</g:Hyperlink></li>
-                    <li><g:Hyperlink targetHistoryToken="adduser:">Add User</g:Hyperlink></li>
-                    <li><g:Hyperlink targetHistoryToken="addtask:">Add Task</g:Hyperlink></li>
+                    <li> <g:Hyperlink targetHistoryToken="home:">Home</g:Hyperlink></li>
+                    <li>Users<i class="fa fa-angle-down"></i>
+                        <ul>
+                            <li><g:Hyperlink targetHistoryToken="users:">User list</g:Hyperlink></li>
+                            <li><g:Hyperlink targetHistoryToken="adduser:">Add User</g:Hyperlink></li>
+                        </ul>
+                    </li>
+                    <li>Tasks<i class="fa fa-angle-down"></i>
+                        <ul>
+                            <li><g:Hyperlink targetHistoryToken="tasks:">Tasks</g:Hyperlink></li>
+                            <li><g:Hyperlink targetHistoryToken="addtask:">Add Task</g:Hyperlink></li>
+                        </ul>
+                    </li>
                     <!--<li>Tutorials <i class="fa fa-angle-down"></i>-->
                         <!--<ul>-->
                             <!--<li>CSS <span>12 Available</span></li>-->

@@ -25,20 +25,20 @@ a{
     margin: 30px auto 0 auto;
     background-color: #f9f9f9;
 }
-.tutorial .tasksBox{
+.tutorial .slider .tasksBox{
     background: #fffdfd;
     float: right;
     overflow: scroll;
     overflow-x: hidden;
     height: 100%;
-    width: 29%;
+    width: 19%;
 }
-.tutorial input[type=text]{
+.tutorial .slider  input[type=text]{
     border: 1px solid #e2e2f1;
     background: #fffdfd;
     font-size: 1rem;
 }
-.tutorial .button{
+.tutorial .slider .button{
     display: inline-block;
     position: relative;
     background: #5B5F97;
@@ -55,13 +55,12 @@ a{
 .tutorial .slider .searchContainer{
     height:10%;
     float: left;
-    width: 70%;
-    margin: 0 0 0.5em 0;
-}
-.tutorial .slider .searchContainer .searchBox{
-    height: 100%;
     background: #ffffff;
-    /*border-radius: 0.25em;*/
+    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 80%;
+    margin: 0 0 0.5em 0;
 }
 .tutorial .slider .block1{
     float: left;
@@ -74,11 +73,10 @@ a{
     position: relative;
 }
 .tutorial .slider .scroll{
-    overflow: scroll;
-    overflow-x: hidden;
+    overflow: auto;
     float: left;
     height: 89%;
-    width: 70%;
+    width: 80%;
 }
 .tutorial .slider .flexTable{
     font-family: "Open Sans", sans-serif;
