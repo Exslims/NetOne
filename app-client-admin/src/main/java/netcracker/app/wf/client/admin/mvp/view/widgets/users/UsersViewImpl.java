@@ -52,9 +52,9 @@ public class UsersViewImpl extends Composite implements UsersView {
         initWidget(ourUiBinder.createAndBindUi(this));
 
         flexTable.setStyleName("flexTable");
-        searchByNameButton.setStyleName("button");
-        searchByLoginButton.setStyleName("button");
-        showAllButton.setStyleName("button");
+//        searchByNameButton.setStyleName("button");
+//        searchByLoginButton.setStyleName("button");
+//        showAllButton.setStyleName("button");
         accordion.setStyleName("accordion");
     }
 

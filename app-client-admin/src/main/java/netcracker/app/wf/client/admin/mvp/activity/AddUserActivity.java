@@ -18,6 +18,7 @@ public class AddUserActivity extends AbstractActivity implements AddUserView.Add
     private ClientFactory clientFactory;
     private UserService service;
     private AddUserView view;
+
     public AddUserActivity(ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
 
@@ -38,12 +39,31 @@ public class AddUserActivity extends AbstractActivity implements AddUserView.Add
         service.addUser(user, new MethodCallback<Void>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-                view.setMessageType(false);
+
             }
 
             @Override
             public void onSuccess(Method method, Void aVoid) {
-                view.setMessageType(true);
+
+            }
+        });
+    }
+
+    @Override
+    public void checkAvailableLogin(String token) {
+        service.checkAvailableLogin(token, new MethodCallback<Boolean>() {
+            @Override
+            public void onFailure(Method method, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onSuccess(Method method, Boolean aBoolean) {
+                if(aBoolean){
+                    view.setCheckLoginLabel("");
+                }else {
+                    view.setCheckLoginLabel("Login is already taken");
+                }
             }
         });
     }

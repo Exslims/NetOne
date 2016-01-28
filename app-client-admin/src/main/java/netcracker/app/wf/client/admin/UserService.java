@@ -47,4 +47,7 @@ public interface UserService extends RestService {
     @GET
     @Path("/logged-user")
     public void getLoggedUser(MethodCallback<User> callback);
+    @GET
+    @Path("/check-available-login/{pattern}")
+    public void checkAvailableLogin(@PathParam("pattern") String pattern, MethodCallback<Boolean> callback);
 }

@@ -1,11 +1,14 @@
 package netcracker.app.wf.client.admin.mvp.view.widgets.users;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
+import netcracker.app.wf.back.model.Role;
 import netcracker.app.wf.client.admin.mvp.view.widgets.AddUserView;
 import netcracker.app.wf.back.model.User;
 import netcracker.app.wf.client.admin.style.GwtResource;
@@ -25,12 +28,13 @@ public class AddUserImpl extends Composite implements AddUserView {
 
     private static AddUserImplUiBinder ourUiBinder = GWT.create(AddUserImplUiBinder.class);
 
-    @UiField
-    GwtResource res;
+
     @UiField
     TextBox loginField;
     @UiField
     TextBox passwordField;
+    @UiField
+    TextBox passwordField2;
     @UiField
     TextBox nameField;
     @UiField
@@ -40,48 +44,113 @@ public class AddUserImpl extends Composite implements AddUserView {
     @UiField
     TextBox countryField;
     @UiField
-    TextBox javaslField;
-
-
-    /**
-     * Callback panels
-     */
+    TextBox skillsField;
+    @UiField
+    ListBox roleField;
 
     @UiField
-    HorizontalPanel succesPanel;
+    Label checkLoginLabel;
     @UiField
-    HorizontalPanel errorPanel;
-
-
+    Label checkPasswordLabel;
     @UiField
-    Button submitButton;
+    Label checkPasswordLabel2;
+    @UiField
+    Label checkNameLabel;
+    @UiField
+    Label checkEmailLabel;
+    @UiField
+    Label checkAddressLabel;
+    @UiField
+    Label checkCountryLabel;
+    @UiField
+    Label checkSkillsLabel;
+    @UiField
+    Label checkRoleLabel;
 
     public AddUserImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
-        res.style().ensureInjected();
+
+        roleField.addItem("ADMIN");
+        roleField.addItem("USER");
+    }
+
+    @UiHandler("passwordField2")
+    void onChangePassword2(ValueChangeEvent<String> event){
+        if(passwordField.getText().equals(passwordField2.getText())){
+            checkPasswordLabel2.setText("");
+        }else {
+            checkPasswordLabel2.setText("Passwords do not match");
+        }
+    }
+    @UiHandler("loginField")
+    void onChangeLogin(ValueChangeEvent<String> event){
+        presenter.checkAvailableLogin(loginField.getText());
     }
 
     @UiHandler("submitButton")
     void onClickSubmit(ClickEvent event){
-        User user = new User();
-        user.setLogin(loginField.getText());
-        user.setPassword(passwordField.getText());
-        user.setName(nameField.getText());
-        user.setEmail(emailField.getText());
-        user.setAddress(addressField.getText());
-        user.setCountry(countryField.getText());
-        user.setJavaSkills(javaslField.getText());
-        presenter.addUser(user);
 
+        if(checkFieldsByNotNull()){
+            if(passwordField.getText().equals(passwordField2.getText()) && checkLoginLabel.getText().equals("")){
+                User user = new User();
+                user.setLogin(loginField.getText());
+                user.setPassword(passwordField.getText());
+                user.setName(nameField.getText());
+                user.setEmail(emailField.getText());
+                user.setAddress(addressField.getText());
+                user.setCountry(countryField.getText());
+                user.setJavaSkills(skillsField.getText());
+
+                Role role = new Role();
+                role.setName("ROLE_" + roleField.getSelectedItemText());
+                user.addRole(role);
+                presenter.addUser(user);
+            }
+        }
     }
 
+    private boolean checkFieldsByNotNull(){
+        if(loginField.getText().equals("")){
+            checkLoginLabel.setText("Login field can't be empty");
+            return false;
+        }
+        if(passwordField.getText().equals("")){
+            checkPasswordLabel.setText("Password field can't be empty");
+            return false;
+        }
+        if(passwordField2.getText().equals("")){
+            checkPasswordLabel2.setText("Password field can't be empty");
+            return false;
+        }
+        if(nameField.getText().equals("")){
+            checkNameLabel.setText("Name field can't be empty");
+            return false;
+        }
+        if(emailField.getText().equals("")){
+            checkEmailLabel.setText("Email field can't be empty");
+            return false;
+        }
+        if(addressField.getText().equals("")){
+            checkAddressLabel.setText("Address field can't be empty");
+            return false;
+        }
+        if(countryField.getText().equals("")){
+            checkCountryLabel.setText("Country field can't be empty");
+            return false;
+        }
+        if(skillsField.getText().equals("")){
+            checkSkillsLabel.setText("Java-skills field can't be empty");
+            return false;
+        }
+        if(roleField.getSelectedItemText().equals("")){
+            checkRoleLabel.setText("Role field can't be empty");
+            return false;
+        }
+        return true;
+    }
 
     @Override
-    public void setMessageType(boolean var) {
-        if(var){
-            this.succesPanel.setVisible(true);
-        }else {
-            this.errorPanel.setVisible(true);
-        }
+    public void setCheckLoginLabel(String token){
+        checkLoginLabel.setText(token);
     }
 }

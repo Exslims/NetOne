@@ -38,9 +38,6 @@
                 <div class="slider">
                     <g:SimplePanel ui:field="appContent"/>
                 </div>
-                <div class="information">
-                    <p>Loading complete...</p>
-                </div>
             </div>
         </div>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'/>

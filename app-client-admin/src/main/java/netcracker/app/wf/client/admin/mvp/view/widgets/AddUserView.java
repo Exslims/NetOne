@@ -8,9 +8,10 @@ import netcracker.app.wf.back.model.User;
  */
 public interface AddUserView extends IsWidget {
     void setPresenter(AddUserPresenter presenter);
-    void setMessageType(boolean var);
+    void setCheckLoginLabel(String token);
 
     interface AddUserPresenter{
         void addUser(User user);
+        void checkAvailableLogin(String token);
     }
 }

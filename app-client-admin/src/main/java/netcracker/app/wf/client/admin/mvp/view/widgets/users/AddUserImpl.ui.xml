@@ -1,34 +1,78 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <ui:with field="res" type="netcracker.app.wf.client.admin.style.GwtResource"/>
-    <g:VerticalPanel>
-        <g:HorizontalPanel styleName="{res.style.contentHead}">
-            <g:Label horizontalAlignment="center">Add user</g:Label>
-        </g:HorizontalPanel>
-            <g:VerticalPanel>
-                <g:Label>Login:</g:Label>
-                <g:TextBox ui:field="loginField"/>
-                <g:Label>Password:</g:Label>
-                <g:TextBox ui:field="passwordField"/>
-                <g:Label>Name:</g:Label>
-                <g:TextBox ui:field="nameField"/>
-                <g:Label>Email:</g:Label>
-                <g:TextBox ui:field="emailField"/>
-                <g:Label>Address:</g:Label>
-                <g:TextBox ui:field="addressField"/>
-                <g:Label>Country:</g:Label>
-                <g:TextBox ui:field="countryField"/>
-                <g:Label>Java Skills:</g:Label>
-                <g:TextBox ui:field="javaslField"/>
-                <g:VerticalPanel>
-                    <g:Button ui:field="submitButton">Submit!</g:Button>
-                    <g:HorizontalPanel ui:field="succesPanel" visible="false" styleName="{res.style.sucNotify}">
-                        <g:Label styleName="{res.style.notifyLabel}">User successfully created</g:Label>
-                    </g:HorizontalPanel>
-                    <g:HorizontalPanel ui:field="errorPanel" visible="false" styleName="{res.style.errorNotify}">
-                        <g:Label styleName="{res.style.notifyLabel}">Error creating User</g:Label>
-                    </g:HorizontalPanel>
-                </g:VerticalPanel>
-        </g:VerticalPanel>
-    </g:VerticalPanel>
+    <g:HTMLPanel>
+        <div class="addContainer">
+            <table class="addTable">
+                <tr>
+                    <td><p>Login:</p></td>
+                    <td><g:TextBox ui:field="loginField"/></td>
+                    <td><g:Label ui:field="checkLoginLabel">            </g:Label> </td>
+                </tr>
+                <tr>
+                    <td><p>Password:</p></td>
+                    <td><g:TextBox ui:field="passwordField"/></td>
+                    <td><g:Label ui:field="checkPasswordLabel">            </g:Label> </td>
+                </tr>
+                <tr>
+                    <td><p>Re-enter password:</p></td>
+                    <td><g:TextBox ui:field="passwordField2"/></td>
+                    <td><g:Label ui:field="checkPasswordLabel2">            </g:Label> </td>
+                </tr>
+                <tr>
+                    <td><p>Name:</p></td>
+                    <td><g:TextBox ui:field="nameField"/></td>
+                    <td><g:Label ui:field="checkNameLabel">            </g:Label> </td>
+                </tr>
+                <tr>
+                    <td><p>Email:</p></td>
+                    <td><g:TextBox ui:field="emailField"/></td>
+                    <td><g:Label ui:field="checkEmailLabel">            </g:Label> </td>
+                </tr>
+                <tr>
+                    <td><p>Address:</p></td>
+                    <td><g:TextBox ui:field="addressField"/></td>
+                    <td><g:Label ui:field="checkAddressLabel">            </g:Label> </td>
+                </tr>
+                <tr>
+                    <td><p>Country:</p></td>
+                    <td><g:TextBox ui:field="countryField"/></td>
+                    <td><g:Label ui:field="checkCountryLabel">            </g:Label> </td>
+                </tr>
+                <tr>
+                    <td><p>Java Skills:</p></td>
+                    <td><g:TextBox ui:field="skillsField"/></td>
+                    <td><g:Label ui:field="checkSkillsLabel">            </g:Label> </td>
+                </tr>
+                <tr>
+                    <td><p>Role:</p></td>
+                    <td><g:ListBox ui:field="roleField"/></td>
+                    <td><g:Label ui:field="checkRoleLabel">            </g:Label> </td>
+                </tr>
+                <tr>
+                    <td><g:Button ui:field="submitButton">Submit</g:Button> </td>
+                </tr>
+            </table>
+        </div>
+    </g:HTMLPanel>
+    <!--<g:VerticalPanel>-->
+            <!--<g:VerticalPanel>-->
+                <!--<g:Label>Login:</g:Label>-->
+                <!--<g:TextBox ui:field="loginField"/>-->
+                <!--<g:Label>Password:</g:Label>-->
+                <!--<g:TextBox ui:field="passwordField"/>-->
+                <!--<g:Label>Name:</g:Label>-->
+                <!--<g:TextBox ui:field="nameField"/>-->
+                <!--<g:Label>Email:</g:Label>-->
+                <!--<g:TextBox ui:field="emailField"/>-->
+                <!--<g:Label>Address:</g:Label>-->
+                <!--<g:TextBox ui:field="addressField"/>-->
+                <!--<g:Label>Country:</g:Label>-->
+                <!--<g:TextBox ui:field="countryField"/>-->
+                <!--<g:Label>Java Skills:</g:Label>-->
+                <!--<g:TextBox ui:field="javaslField"/>-->
+                <!--<g:VerticalPanel>-->
+                    <!--<g:Button ui:field="submitButton">Submit!</g:Button>-->
+                <!--</g:VerticalPanel>-->
+        <!--</g:VerticalPanel>-->
+    <!--</g:VerticalPanel>-->
 </ui:UiBinder>
