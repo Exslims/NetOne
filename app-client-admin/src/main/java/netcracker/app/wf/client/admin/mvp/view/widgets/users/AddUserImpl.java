@@ -91,6 +91,7 @@ public class AddUserImpl extends Composite implements AddUserView {
     void onClickSubmit(ClickEvent event){
 
         if(checkFieldsByNotNull()){
+            presenter.checkAvailableLogin(loginField.getText());
             if(passwordField.getText().equals(passwordField2.getText()) && checkLoginLabel.getText().equals("")){
                 User user = new User();
                 user.setLogin(loginField.getText());
@@ -105,57 +106,71 @@ public class AddUserImpl extends Composite implements AddUserView {
                 role.setName("ROLE_" + roleField.getSelectedItemText());
                 user.addRole(role);
                 presenter.addUser(user);
+
+                loginField.setText("");
+                passwordField.setText("");
+                passwordField2.setText("");
+                nameField.setText("");
+                emailField.setText("");
+                addressField.setText("");
+                countryField.setText("");
+                skillsField.setText("");
             }
         }
 
-        loginField.setText("");
-        passwordField.setText("");
-        passwordField2.setText("");
-        nameField.setText("");
-        emailField.setText("");
-        addressField.setText("");
-        countryField.setText("");
-        skillsField.setText("");
     }
 
     private boolean checkFieldsByNotNull(){
+        boolean flag = true;
         if(loginField.getText().equals("")){
             checkLoginLabel.setText("Login field can't be empty");
-            return false;
+            flag = false;
         }
         if(passwordField.getText().equals("")){
             checkPasswordLabel.setText("Password field can't be empty");
-            return false;
+            flag = false;
+        }else {
+            checkPasswordLabel.setText("");
         }
         if(passwordField2.getText().equals("")){
             checkPasswordLabel2.setText("Password field can't be empty");
-            return false;
+            flag = false;
+        }else {
+            checkPasswordLabel2.setText("");
         }
         if(nameField.getText().equals("")){
             checkNameLabel.setText("Name field can't be empty");
-            return false;
+            flag = false;
+        }else {
+            checkNameLabel.setText("");
         }
         if(emailField.getText().equals("")){
             checkEmailLabel.setText("Email field can't be empty");
-            return false;
+            flag = false;
         }
         if(addressField.getText().equals("")){
             checkAddressLabel.setText("Address field can't be empty");
-            return false;
+            flag = false;
+        }else {
+            checkAddressLabel.setText("");
         }
         if(countryField.getText().equals("")){
             checkCountryLabel.setText("Country field can't be empty");
-            return false;
+            flag = false;
+        }else {
+            checkCountryLabel.setText("");
         }
         if(skillsField.getText().equals("")){
             checkSkillsLabel.setText("Java-skills field can't be empty");
-            return false;
+            flag = false;
+        }else {
+            checkSkillsLabel.setText("");
         }
         if(roleField.getSelectedItemText().equals("")){
             checkRoleLabel.setText("Role field can't be empty");
-            return false;
+            flag = false;
         }
-        return true;
+        return flag;
     }
 
     @Override
