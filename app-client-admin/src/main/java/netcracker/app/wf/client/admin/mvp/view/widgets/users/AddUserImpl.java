@@ -107,6 +107,15 @@ public class AddUserImpl extends Composite implements AddUserView {
                 presenter.addUser(user);
             }
         }
+
+        loginField.setText("");
+        passwordField.setText("");
+        passwordField2.setText("");
+        nameField.setText("");
+        emailField.setText("");
+        addressField.setText("");
+        countryField.setText("");
+        skillsField.setText("");
     }
 
     private boolean checkFieldsByNotNull(){
