@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Repository
@@ -133,10 +134,14 @@ public class HibernateUserDAO implements UserDAO {
     }
 
     private void resetRelations(User user) {
+
         Set<Role> roles = user.getRoles();
+        if (roles != null)
         for(Role role : roles)
             role.setUser(user);
+
         Set<Task> tasks = user.getTasks();
+        if (tasks != null)
         for (Task task : tasks)
             task.setUser(user);
     }
