@@ -30,7 +30,7 @@
                         <!--</li>-->
                         <!--<li>Contact</li>-->
                     </ul>
-                    <div class="loginBox">
+                    <div class="logoutBox">
                         <g:Label ui:field="loggedUser"/>
                         <a href="/view/logout/">Logout</a>
                     </div>

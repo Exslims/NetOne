@@ -16,7 +16,7 @@
                       password-parameter="password"/>
         <s:logout logout-success-url="/view/login/"/>
         <s:intercept-url pattern="/view/login/" access="permitAll"/>
-        <s:intercept-url pattern="/*.ico" access="permitAll"/>
+        <s:intercept-url pattern="/static/*.css" access="permitAll"/>
         <s:intercept-url pattern="/scripts/**" access="permitAll"/>
         <s:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
     </s:http>

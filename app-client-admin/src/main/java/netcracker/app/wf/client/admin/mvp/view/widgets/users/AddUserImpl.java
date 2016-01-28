@@ -147,6 +147,8 @@ public class AddUserImpl extends Composite implements AddUserView {
         if(emailField.getText().equals("")){
             checkEmailLabel.setText("Email field can't be empty");
             flag = false;
+        } else {
+            checkEmailLabel.setText("");
         }
         if(addressField.getText().equals("")){
             checkAddressLabel.setText("Address field can't be empty");

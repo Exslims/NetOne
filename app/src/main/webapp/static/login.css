@@ -1,0 +1,52 @@
+* {
+    font-size: 14px;
+}
+body {
+    background-color: #3d385a;
+    margin-top: 50px;
+    font-family: "Open Sans", sans-serif;
+}
+div.card {
+    margin: auto;
+    width: 400px;
+    height: 190px;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0px 3px 3px silver;
+    padding: 25px;
+}
+div.card h1 {
+    margin: 0 0 20px 0;
+    font-weight: normal;
+    color: #3d385a;
+    font-size: 30px;
+}
+div.card label {
+    float: left;
+    padding: 10px 10px 14px 0;
+    width: 175px;
+    margin-top: 10px;
+    clear: left;
+}
+div.card input {
+    float: right;
+    border: 2px solid silver;
+    padding: 8px 0;
+    border-width: 0 0 2px 0;
+    width: 200px;
+    margin-top: 15px;
+    transition: border-color 0.3s;
+}
+div.card input:focus,
+div.card input:hover {
+    border-color: #3d385a;
+    outline: 0;
+}
+div.card input[type=submit] {
+    border: 0;
+    background-color: white;
+    color: #3d385a;
+    text-transform: uppercase;
+    width: auto;
+    cursor: pointer;
+}
