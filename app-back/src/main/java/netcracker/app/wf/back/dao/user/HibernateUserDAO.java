@@ -108,6 +108,7 @@ public class HibernateUserDAO implements UserDAO {
     public void save(User user) {
         logger.trace("Saving  " + user.toString());
         Session currentSession = sessionFactory.getCurrentSession();
+        resetRelations(user);
         currentSession.persist(user);
         logger.trace("Saved user: " + user.toString());
     }
@@ -126,17 +127,18 @@ public class HibernateUserDAO implements UserDAO {
     public void update(User user) {
         logger.trace("Updating  " + user.toString());
         Session currentSession = sessionFactory.getCurrentSession();
+        resetRelations(user);
+        currentSession.update(user);
+        logger.trace("Updated user: " + user.toString());
+    }
 
+    private void resetRelations(User user) {
         Set<Role> roles = user.getRoles();
         for(Role role : roles)
             role.setUser(user);
-
         Set<Task> tasks = user.getTasks();
         for (Task task : tasks)
             task.setUser(user);
-
-        currentSession.update(user);
-        logger.trace("Updated user: " + user.toString());
     }
 
     public SessionFactory getSessionFactory() {
