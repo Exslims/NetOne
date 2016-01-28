@@ -1,6 +1,6 @@
 package netcracker.app.wf.service;
 
-import netcracker.app.wf.back.dao.task.TaskDAO;
+import netcracker.app.wf.back.bo.task.TaskBO;
 import netcracker.app.wf.back.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,24 +15,24 @@ import java.util.List;
 public class TaskRestController {
 
     @Autowired
-    private TaskDAO taskDAO;
+    private TaskBO taskBO;
 
     public TaskRestController() {
     }
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.GET, produces = "application/json")
     public Task findById(@PathVariable int id) {
-        return this.taskDAO.findById(id);
+        return this.taskBO.findById(id);
     }
 
     @RequestMapping(value = "/title/{title}", method = RequestMethod.GET, produces = "application/json")
     public List<Task> findByTitle(@PathVariable String title) {
-        return this.taskDAO.findByTitle(title);
+        return this.taskBO.findByTitle(title);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
     public List<Task> findAll() {
-        return this.taskDAO.findAll();
+        return this.taskBO.findAll();
     }
 
 }

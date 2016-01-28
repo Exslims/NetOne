@@ -7,7 +7,7 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/scheduler_db" />
-        <property name="username" value="root1" />
+        <property name="username" value="root" />
         <property name="password" value="123" />
     </bean>
 
@@ -35,4 +35,13 @@
     <bean id="taskDao" class="netcracker.app.wf.back.dao.task.HibernateTaskDAO">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+
+    <bean id="taskBo" class="netcracker.app.wf.back.bo.task.TaskBOImpl">
+        <property name="taskDAO" ref="taskDao"/>
+    </bean>
+
+    <bean id="userBo" class="netcracker.app.wf.back.bo.user.UserBOImpl">
+        <property name="userDAO" ref="userDao"/>
+    </bean>
+
 </beans>
