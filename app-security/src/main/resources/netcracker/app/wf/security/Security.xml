@@ -8,9 +8,9 @@
        http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
     <s:http use-expressions="true" request-matcher="ant">
-        <s:http-basic/>
+        <!--<s:http-basic/>-->
         <s:form-login login-page="/view/login/"
-                      default-target-url="/view/example/"
+                      authentication-success-handler-ref="authSuccessHandler"
                       authentication-failure-url="/view/login/"
                       username-parameter="login"
                       password-parameter="password"/>
@@ -30,4 +30,5 @@
     <bean id="userService" class="netcracker.app.wf.security.AppUserDetailsService">
         <property name="dao" ref="userDao"/>
     </bean>
+    <bean id="authSuccessHandler" class="netcracker.app.wf.security.AuthSuccessHandler"/>
 </beans>
