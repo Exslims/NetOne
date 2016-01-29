@@ -17,7 +17,6 @@ import java.util.List;
  * Created by ���������� on 02.12.2015.
  */
 public class AppLayout extends Composite {
-    private ClientFactory clientFactory;
     interface MainViewUiBinder extends UiBinder<Widget, AppLayout> {
     }
 
@@ -29,9 +28,8 @@ public class AppLayout extends Composite {
     Label loggedUser;
     @UiField
     SimplePanel appContent;
-    public AppLayout(ClientFactory clientFactory) {
+    public AppLayout() {
         initWidget(ourUiBinder.createAndBindUi(this));
-        this.clientFactory = clientFactory;
 
         userService = GWT.create(UserService.class);
         userService.getLoggedUser(new MethodCallback<User>() {

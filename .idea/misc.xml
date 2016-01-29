@@ -18,6 +18,7 @@
         <option value="$PROJECT_DIR$/app-client-admin/pom.xml" />
         <option value="$PROJECT_DIR$/app/pom.xml" />
         <option value="$PROJECT_DIR$/app-security/pom.xml" />
+        <option value="$PROJECT_DIR$/app-client-user/pom.xml" />
       </list>
     </option>
   </component>

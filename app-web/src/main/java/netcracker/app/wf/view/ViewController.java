@@ -32,7 +32,7 @@ public class ViewController {
         if(auth != null){
             new SecurityContextLogoutHandler().logout(request,response,auth);
         }
-        return "view." + "login";
+        return "view.login";
     }
 
 }

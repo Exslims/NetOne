@@ -19,11 +19,8 @@ public class HomeViewImpl extends Composite implements HomeView {
 
     private static HomeViewImplUiBinder ourUiBinder = GWT.create(HomeViewImplUiBinder.class);
 
-    @UiField
-    GwtResource res;
     public HomeViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
-        res.style().ensureInjected();
     }
 
     @Override

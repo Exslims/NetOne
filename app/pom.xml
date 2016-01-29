@@ -40,6 +40,12 @@
         </dependency>
         <dependency>
             <groupId>netcracker.app.wf</groupId>
+            <artifactId>app-client-user</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>netcracker.app.wf</groupId>
             <artifactId>app-back</artifactId>
             <version>${project.version}</version>
         </dependency>

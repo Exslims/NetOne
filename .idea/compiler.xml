@@ -52,11 +52,19 @@
         <processorPath useClasspath="true" />
         <module name="app-security" />
       </profile>
+      <profile default="false" name="Annotation profile for app-client-user" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="app-client-user" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="app" target="1.8" />
       <module name="app-back" target="1.8" />
       <module name="app-client-admin" target="1.8" />
+      <module name="app-client-user" target="1.8" />
       <module name="app-security" target="1.8" />
       <module name="app-web" target="1.8" />
       <module name="NetOne" target="1.8" />

@@ -19,10 +19,8 @@ public class HomeActivity extends AbstractActivity implements HomeView.HomePrese
 
     @Override
     public void start(AcceptsOneWidget panel, EventBus eventBus) {
-        GWT.log("Setting Home View");
         HomeView homeView = clientFactory.getHomeView();
         homeView.setPresenter(this);
         panel.setWidget(homeView.asWidget());
-        GWT.log("Done");
     }
 }

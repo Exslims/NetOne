@@ -1,0 +1,28 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:HTMLPanel>
+        <div class="container">
+            <div class="tutorial">
+                <div class="menuBox">
+                    <ul>
+                        <li> <g:Hyperlink targetHistoryToken="home:">Home</g:Hyperlink></li>
+                        <!--<li>Tasks<i class="fa fa-angle-down"></i>-->
+                            <!--<ul>-->
+                                <!--<li><g:Hyperlink targetHistoryToken="tasks:">Task list</g:Hyperlink></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                    </ul>
+                    <div class="logoutBox">
+                        <g:Label ui:field="loggedUser"/>
+                        <a href="/view/logout/">Logout</a>
+                    </div>
+                </div>
+                <div class="slider">
+                    <g:SimplePanel ui:field="appContent"/>
+                </div>
+            </div>
+        </div>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+    </g:HTMLPanel>
+</ui:UiBinder>

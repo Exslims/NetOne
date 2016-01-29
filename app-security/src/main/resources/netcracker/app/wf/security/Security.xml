@@ -16,9 +16,11 @@
                       password-parameter="password"/>
         <s:logout logout-success-url="/view/login/"/>
         <s:intercept-url pattern="/view/login/" access="permitAll"/>
+        <s:intercept-url pattern="/" access="hasRole('ROLE_USER')"/>
         <s:intercept-url pattern="/static/*.css" access="permitAll"/>
         <s:intercept-url pattern="/scripts/**" access="permitAll"/>
-        <s:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <s:intercept-url pattern="/view/admin/" access="hasRole('ROLE_ADMIN')"/>
+        <s:intercept-url pattern="/view/user/" access="hasRole('ROLE_USER')"/>
     </s:http>
 
     <s:authentication-manager alias="authenticationManager">
@@ -30,5 +32,5 @@
     <bean id="userService" class="netcracker.app.wf.security.AppUserDetailsService">
         <property name="dao" ref="userDao"/>
     </bean>
-    <bean id="authSuccessHandler" class="netcracker.app.wf.security.AuthSuccessHandler"/>
+    <bean id="authSuccessHandler" class="netcracker.app.wf.security.AuthSuccessHandlerImpl"/>
 </beans>

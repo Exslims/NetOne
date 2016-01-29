@@ -8,6 +8,7 @@
         <module>app</module>
         <module>app-back</module>
         <module>app-client-admin</module>
+        <module>app-client-user</module>
         <module>app-web</module>
         <module>app-security</module>
     </modules>
