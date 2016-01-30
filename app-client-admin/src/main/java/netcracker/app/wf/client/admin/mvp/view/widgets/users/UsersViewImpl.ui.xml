@@ -25,6 +25,9 @@
             <div class="scroll">
                 <g:FlexTable ui:field="flexTable"/>
             </div>
+            <div class="statusBox">
+                <g:Label ui:field="statusField"/>
+            </div>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>

@@ -7,13 +7,11 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.back.model.Role;
 import netcracker.app.wf.back.model.Task;
 import netcracker.app.wf.client.admin.mvp.view.widgets.UsersView;
 import netcracker.app.wf.back.model.User;
-import netcracker.app.wf.client.admin.style.GwtResource;
 
 import java.util.List;
 import java.util.Set;
@@ -46,6 +44,8 @@ public class UsersViewImpl extends Composite implements UsersView {
     TextBox nameField;
     @UiField
     TextBox loginField;
+    @UiField
+    Label statusField;
 
     @SuppressWarnings("all")
     public UsersViewImpl() {
@@ -56,6 +56,7 @@ public class UsersViewImpl extends Composite implements UsersView {
 //        searchByLoginButton.setStyleName("button");
 //        showAllButton.setStyleName("button");
         accordion.setStyleName("accordion");
+        statusField.setStyleName("status");
     }
 
 
@@ -124,7 +125,6 @@ public class UsersViewImpl extends Composite implements UsersView {
 
 
             Button removeButton = new Button("Delete");
-            removeButton.setStyleName("button");
             removeButton.addClickHandler(new ClickHandler() {
                 @Override
                 public void onClick(ClickEvent event) {
@@ -168,6 +168,9 @@ public class UsersViewImpl extends Composite implements UsersView {
 
             accordion.add(vPanel);
         }
+    }
+    public void setStatusLabel(String token){
+        statusField.setText(token);
     }
 
 //    public static native void test()/*-{

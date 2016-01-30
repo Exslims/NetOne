@@ -21,16 +21,16 @@ a{
 }
 .tutorial .loginBox{
     margin: auto;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
 }
 
 .tutorial {
     width: 80%;
     margin: 30px auto 0 auto;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
 }
 .tutorial .slider .tasksBox{
-    background: #fffdfd;
+    background: #ffffff;
     float: right;
     overflow: scroll;
     overflow-x: hidden;
@@ -39,7 +39,7 @@ a{
 }
 .tutorial .slider  input[type=text]{
     border: 1px solid #e2e2f1;
-    background: #fffdfd;
+    background: #ffffff;
     font-size: 1rem;
 }
 .tutorial .slider button{
@@ -111,7 +111,7 @@ a{
 .tutorial .slider .scroll{
     overflow: auto;
     float: left;
-    height: 89%;
+    height: 84%;
     width: 70%;
 }
 .tutorial .slider .flexTable{
@@ -145,9 +145,24 @@ a{
     margin-bottom: 30px;
     font-family: "Open Sans", sans-serif;
 }
+.tutorial .statusBox {
+    width: 70%;
+    height: 5%;
+    float: left;
+    background: #ffffff ;
+    padding: 5px;
+    margin-bottom: 30px;
+    font-family: "Open Sans", sans-serif;
+}
+.tutorial .statusBox .status {
+    color: #333;
+    font-size: 1.2rem;
+    padding: 0px 10px;
+    border-left: 3px solid #6495ed;
+}
 .tutorial .information h1 {
     color: #333;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 0px 10px;
     border-left: 3px solid #6495ed;
 }

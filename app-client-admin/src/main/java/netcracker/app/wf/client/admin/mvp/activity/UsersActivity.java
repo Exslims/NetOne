@@ -35,95 +35,92 @@ public class UsersActivity extends AbstractActivity implements UsersView.UsersPr
         view.setPresenter(this);
         panel.setWidget(view.asWidget());
 
-        service.getAllUsers(new MethodCallback<List<User>>() {
-            @Override
-            public void onFailure(Method method, Throwable throwable) {
-            }
-
-            @Override
-            public void onSuccess(Method method, List<User> users) {
-                view.updateTable(users);
-            }
-        });
+        showAll();
     }
 
     @Override
-    public void updateTableByName(String token) {
+    public void updateTableByName(final String token) {
         if(!token.equals("")) {
             service.getUserByName(token, new MethodCallback<List<User>>() {
                 @Override
                 public void onFailure(Method method, Throwable throwable) {
+                    view.setStatusLabel("Cannot load users with name[" + token + "*] " + throwable.getMessage());
                 }
 
                 @Override
                 public void onSuccess(Method method, List<User> users) {
                     view.updateTable(users);
+                    view.setStatusLabel("Loading users with name[" + token + "*] successfully completed");
                 }
             });
         }
     }
 
     @Override
-    public void updateTableByNameLike(String token) {
+    public void updateTableByNameLike(final String token) {
         if(!token.equals("")) {
             service.getUserByNameLike(token, new MethodCallback<List<User>>() {
                 @Override
                 public void onFailure(Method method, Throwable throwable) {
-
+                    view.setStatusLabel("Cannot load users with name[" + token + "*] " + throwable.getMessage());
                 }
 
                 @Override
                 public void onSuccess(Method method, List<User> users) {
                     view.updateTable(users);
+                    view.setStatusLabel("Loading users with name[" + token + "*] successfully completed");
                 }
             });
         }
     }
 
     @Override
-    public void updateTableByLoginLike(String token) {
+    public void updateTableByLoginLike(final String token) {
         if(!token.equals("")) {
             service.getUserByLoginLike(token, new MethodCallback<List<User>>() {
                 @Override
                 public void onFailure(Method method, Throwable throwable) {
-
+                    view.setStatusLabel("Cannot load users with login[" + token + "*] " + throwable.getMessage());
                 }
 
                 @Override
                 public void onSuccess(Method method, List<User> users) {
                     view.updateTable(users);
+                    view.setStatusLabel("Loading users with login[" + token + "*] successfully completed");
                 }
             });
         }
     }
 
     @Override
-    public void updateTableByEmailLike(String token) {
+    public void updateTableByEmailLike(final String token) {
         if(!token.equals("")) {
             service.getUserByEmailLike(token, new MethodCallback<List<User>>() {
                 @Override
                 public void onFailure(Method method, Throwable throwable) {
-
+                    view.setStatusLabel("Cannot load users with email[" + token + "*] " + throwable.getMessage());
                 }
 
                 @Override
                 public void onSuccess(Method method, List<User> users) {
                     view.updateTable(users);
+                    view.setStatusLabel("Loading users with email[" + token + "*] successfully completed");
                 }
             });
         }
     }
 
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(final User user) {
         service.deleteUser(user, new MethodCallback<Void>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-
+                view.setStatusLabel("Cannot deleting user with login[" + user.getLogin() + "] " + throwable.getMessage());
             }
 
             @Override
             public void onSuccess(Method method, Void aVoid) {
+                view.setStatusLabel("Deleting user with login[" + user.getLogin() + "] successfully completed");
             }
         });
     }
@@ -134,11 +131,13 @@ public class UsersActivity extends AbstractActivity implements UsersView.UsersPr
         service.getAllUsers(new MethodCallback<List<User>>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
+                view.setStatusLabel("Cannot load all users: " + throwable.getMessage());
             }
 
             @Override
             public void onSuccess(Method method, List<User> users) {
                 view.updateTable(users);
+                view.setStatusLabel("Loading all users successfully completed");
             }
         });
     }

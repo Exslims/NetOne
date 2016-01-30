@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface UsersView extends IsWidget {
     void updateTable(List<User> users);
-
+    void setStatusLabel(String token);
     void setPresenter(UsersPresenter presenter);
 
     public interface UsersPresenter{
