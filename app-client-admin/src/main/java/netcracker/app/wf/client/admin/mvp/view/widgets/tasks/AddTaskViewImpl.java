@@ -34,63 +34,54 @@ public class AddTaskViewImpl extends Composite implements AddTaskView {
 
     private static AddTaskViewImplUiBinder ourUiBinder = GWT.create(AddTaskViewImplUiBinder.class);
 
-    @UiField
-    GwtResource res;
 
     @UiField
     TextBox titleField;
     @UiField
     TextArea descField;
     @UiField
-    ListBox listField;
-
-    /**
-     * Callback panels
-     */
-
+    ListBox targetField;
     @UiField
-    HorizontalPanel succesPanel;
-    @UiField
-    HorizontalPanel errorPanel;
+    Label statusField;
+
 
     public AddTaskViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
-        res.style().ensureInjected();
     }
     @UiHandler("submitButton")
     void onClick(ClickEvent event){
-        Task task = new Task();
-        task.setTitle(titleField.getText());
-        task.setDescription(descField.getText());
-        task.setNotificationDate(new Date(System.currentTimeMillis()));
+        if(descField.getSelectionLength() < 255) {
+            if (!titleField.getText().equals("") && !descField.getText().equals("")) {
+                Task task = new Task();
+                task.setTitle(titleField.getText());
+                task.setDescription(descField.getText());
+                task.setNotificationDate(new Date(System.currentTimeMillis()));
 
-        User user = usersMap.get(listField.getSelectedValue());
-        user.addTask(task);
-        presenter.updateUser(user);
+                User user = usersMap.get(targetField.getSelectedValue());
+                user.addTask(task);
+                presenter.updateUser(user);
+
+                titleField.setText("");
+                descField.setText("");
+            }
+        }else {
+            statusField.setText("Max length of description = 255");
+        }
+
     }
 
     @Override
-    public void addItems(List<User> users) {
+    public void setUsers(List<User> users) {
+        targetField.clear();
         usersMap = new HashMap<>();
         for (User user: users) {
-            listField.addItem(user.getLogin());
+            targetField.addItem(user.getLogin());
             usersMap.put(user.getLogin(),user);
         }
     }
 
     @Override
-    public void setMessageType(boolean var) {
-        if(var){
-            succesPanel.setVisible(true);
-        } else {
-            errorPanel.setVisible(true);
-        }
-    }
-
-    @Override
-    protected void onAttach() {
-        super.onAttach();
-        listField.clear();
-        presenter.fillListBox();
+    public void setStatus(String token) {
+        statusField.setText(token);
     }
 }

@@ -10,8 +10,8 @@ import java.util.List;
  */
 public interface AddTaskView extends IsWidget {
     void setPresenter(AddTaskPresenter presenter);
-    void addItems(List<User> users);
-    void setMessageType(boolean var);
+    void setUsers(List<User> users);
+    void setStatus(String token);
     interface AddTaskPresenter{
         void updateUser(User user);
         void fillListBox();

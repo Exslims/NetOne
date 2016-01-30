@@ -32,6 +32,7 @@ public class AddTaskActivity extends AbstractActivity implements AddTaskView.Add
         view = clientFactory.getAddTaskView();
         view.setPresenter(this);
 
+        fillListBox();
         panel.setWidget(view);
     }
 
@@ -41,12 +42,12 @@ public class AddTaskActivity extends AbstractActivity implements AddTaskView.Add
         service.updateUser(user, new MethodCallback<Void>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-                view.setMessageType(false);
+                view.setStatus("Can not update user: " + throwable.getMessage());
             }
 
             @Override
             public void onSuccess(Method method, Void aVoid) {
-                view.setMessageType(true);
+                view.setStatus("Task successfully added");
             }
         });
     }
@@ -56,12 +57,13 @@ public class AddTaskActivity extends AbstractActivity implements AddTaskView.Add
         service.getAllUsers(new MethodCallback<List<User>>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-
+                view.setStatus("Can not load users: " + throwable.getMessage());
             }
 
             @Override
             public void onSuccess(Method method, List<User> users) {
-                view.addItems(users);
+                view.setUsers(users);
+                view.setStatus("Loading all users completed");
             }
         });
     }

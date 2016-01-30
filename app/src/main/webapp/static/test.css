@@ -42,6 +42,11 @@ a{
     background: #ffffff;
     font-size: 1rem;
 }
+.tutorial .slider  input[type=password]{
+    border: 1px solid #e2e2f1;
+    background: #ffffff;
+    font-size: 1rem;
+}
 .tutorial .slider button{
     display: inline-block;
     background: #5B5F97;
@@ -110,8 +115,9 @@ a{
 }
 .tutorial .slider .scroll{
     overflow: auto;
+    margin-bottom: 8px;
     float: left;
-    height: 84%;
+    height: 83%;
     width: 70%;
 }
 .tutorial .slider .flexTable{

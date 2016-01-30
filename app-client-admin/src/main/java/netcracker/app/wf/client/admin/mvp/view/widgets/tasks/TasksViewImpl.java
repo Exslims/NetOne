@@ -25,9 +25,7 @@ public class TasksViewImpl extends Composite implements TasksView {
     private static TasksViewUiBinder ourUiBinder = GWT.create(TasksViewUiBinder.class);
 
     @UiField
-    GwtResource res;
-    @UiField
-    FlexTable tasksTable;
+    FlexTable flexTable;
     @UiField
     TextBox titleField;
     @UiField
@@ -37,11 +35,13 @@ public class TasksViewImpl extends Composite implements TasksView {
     @UiField
     Button searchByIdButton;
     @UiField
-    Label callbackField;
+    Label statusField;
 
+    @SuppressWarnings("all")
     public TasksViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
-        res.style().ensureInjected();
+
+        flexTable.setStyleName("flexTable");
     }
 
     @UiHandler("searchByTitleButton")
@@ -59,20 +59,18 @@ public class TasksViewImpl extends Composite implements TasksView {
 
     @Override
     public void updateTable(List<Task> tasks) {
-        tasksTable.removeAllRows();
-        tasksTable.setText(0, 0, "Id");
-        tasksTable.setText(0, 1, "Title");
-        tasksTable.setText(0, 2, "Description");
-        tasksTable.setText(0, 3, "Notification Date");
-
-        tasksTable.getRowFormatter().addStyleName(0,res.style().tableHead());
+        flexTable.removeAllRows();
+        flexTable.setText(0, 0, "Id");
+        flexTable.setText(0, 1, "Title");
+        flexTable.setText(0, 2, "Description");
+        flexTable.setText(0, 3, "Notification Date");
 
         for (Task task : tasks) {
-            int rowCount = tasksTable.getRowCount();
-            tasksTable.setText(rowCount + 1,0,String.valueOf(task.getId()));
-            tasksTable.setText(rowCount + 1,1,task.getTitle());
-            tasksTable.setText(rowCount + 1,2,task.getDescription());
-            tasksTable.setText(rowCount + 1,3,String.valueOf(task.getNotificationDate()));
+            int rowCount = flexTable.getRowCount();
+            flexTable.setText(rowCount + 1,0,String.valueOf(task.getId()));
+            flexTable.setText(rowCount + 1,1,task.getTitle());
+            flexTable.setText(rowCount + 1,2,task.getDescription());
+            flexTable.setText(rowCount + 1,3,String.valueOf(task.getNotificationDate()));
         }
     }
 
@@ -83,6 +81,6 @@ public class TasksViewImpl extends Composite implements TasksView {
 
     @Override
     public void setMessage(String var) {
-        this.callbackField.setText(var);
+//        this.callbackField.setText(var);
     }
 }

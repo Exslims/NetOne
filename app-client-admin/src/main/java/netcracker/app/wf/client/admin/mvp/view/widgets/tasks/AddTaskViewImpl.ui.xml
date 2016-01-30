@@ -1,27 +1,26 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <ui:with field="res" type="netcracker.app.wf.client.admin.style.GwtResource"/>
-    <g:VerticalPanel>
-        <g:HorizontalPanel styleName="{res.style.contentHead}">
-            <g:Label horizontalAlignment="center">Add user</g:Label>
-        </g:HorizontalPanel>
-        <g:VerticalPanel>
-            <g:Label>Title:</g:Label>
-            <g:TextBox ui:field="titleField"/>
-            <g:Label>Description:</g:Label>
-            <g:TextArea ui:field="descField"/>
-            <g:Label>Target:</g:Label>
-            <g:ListBox ui:field="listField"/>
-            <g:VerticalPanel>
-                <g:Button ui:field="submitButton">Submit!</g:Button>
-                <g:HorizontalPanel ui:field="succesPanel" visible="false" styleName="{res.style.sucNotify}">
-                    <g:Label styleName="{res.style.notifyLabel}">Task successfully updated</g:Label>
-                </g:HorizontalPanel>
-                <g:HorizontalPanel ui:field="errorPanel" visible="false" styleName="{res.style.errorNotify}">
-                    <g:Label styleName="{res.style.notifyLabel}">Error create task</g:Label>
-                </g:HorizontalPanel>
-            </g:VerticalPanel>
-        </g:VerticalPanel>
-    </g:VerticalPanel>
-
+    <g:HTMLPanel>
+        <div class="addContainer">
+            <table class="addTable">
+                <tr>
+                    <td><p>Title:</p></td>
+                    <td><g:TextBox maxLength="50" ui:field="titleField"/></td>
+                    <td><g:Label/></td>
+                </tr>
+                <tr>
+                    <td><p>Description:</p></td>
+                    <td><g:TextArea ui:field="descField"/></td>
+                </tr>
+                <tr>
+                    <td><p>Target:</p></td>
+                    <td><g:ListBox ui:field="targetField"/></td>
+                </tr>
+                <tr>
+                    <td><g:Button ui:field="submitButton">Submit</g:Button> </td>
+                    <td><g:Label ui:field="statusField">Submit</g:Label> </td>
+                </tr>
+            </table>
+        </div>
+    </g:HTMLPanel>
 </ui:UiBinder>

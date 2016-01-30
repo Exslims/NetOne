@@ -10,12 +10,12 @@
                 </tr>
                 <tr>
                     <td><p>Password:</p></td>
-                    <td><g:TextBox ui:field="passwordField"/></td>
+                    <td><g:PasswordTextBox ui:field="passwordField"/></td>
                     <td><g:Label ui:field="checkPasswordLabel">            </g:Label> </td>
                 </tr>
                 <tr>
                     <td><p>Re-enter password:</p></td>
-                    <td><g:TextBox ui:field="passwordField2"/></td>
+                    <td><g:PasswordTextBox ui:field="passwordField2"/></td>
                     <td><g:Label ui:field="checkPasswordLabel2">            </g:Label> </td>
                 </tr>
                 <tr>

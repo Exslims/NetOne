@@ -54,29 +54,16 @@ public class AddUserImpl extends Composite implements AddUserView {
     Label checkPasswordLabel;
     @UiField
     Label checkPasswordLabel2;
-    @UiField
-    Label checkNameLabel;
-    @UiField
-    Label checkEmailLabel;
-    @UiField
-    Label checkAddressLabel;
-    @UiField
-    Label checkCountryLabel;
-    @UiField
-    Label checkSkillsLabel;
-    @UiField
-    Label checkRoleLabel;
 
     public AddUserImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
-
         roleField.addItem("ADMIN");
         roleField.addItem("USER");
     }
 
     @UiHandler("passwordField2")
     void onChangePassword2(ValueChangeEvent<String> event){
-        if(passwordField.getText().equals(passwordField2.getText())){
+        if(passwordField.getText().equals(passwordField2.getText()) && passwordField2.getText().equals(passwordField.getText()) ){
             checkPasswordLabel2.setText("");
         }else {
             checkPasswordLabel2.setText("Passwords do not match");
@@ -137,40 +124,6 @@ public class AddUserImpl extends Composite implements AddUserView {
             flag = false;
         }else {
             checkPasswordLabel2.setText("");
-        }
-        if(nameField.getText().equals("")){
-            checkNameLabel.setText("Name field can't be empty");
-            flag = false;
-        }else {
-            checkNameLabel.setText("");
-        }
-        if(emailField.getText().equals("")){
-            checkEmailLabel.setText("Email field can't be empty");
-            flag = false;
-        } else {
-            checkEmailLabel.setText("");
-        }
-        if(addressField.getText().equals("")){
-            checkAddressLabel.setText("Address field can't be empty");
-            flag = false;
-        }else {
-            checkAddressLabel.setText("");
-        }
-        if(countryField.getText().equals("")){
-            checkCountryLabel.setText("Country field can't be empty");
-            flag = false;
-        }else {
-            checkCountryLabel.setText("");
-        }
-        if(skillsField.getText().equals("")){
-            checkSkillsLabel.setText("Java-skills field can't be empty");
-            flag = false;
-        }else {
-            checkSkillsLabel.setText("");
-        }
-        if(roleField.getSelectedItemText().equals("")){
-            checkRoleLabel.setText("Role field can't be empty");
-            flag = false;
         }
         return flag;
     }
