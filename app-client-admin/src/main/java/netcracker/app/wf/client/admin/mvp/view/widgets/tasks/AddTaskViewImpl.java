@@ -65,7 +65,7 @@ public class AddTaskViewImpl extends Composite implements AddTaskView {
                 descField.setText("");
             }
         }else {
-            statusField.setText("Max length of description = 255");
+            statusField.setText("Max length of description = 255 ");
         }
 
     }
