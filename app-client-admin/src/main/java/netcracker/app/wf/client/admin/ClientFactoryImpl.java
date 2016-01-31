@@ -8,6 +8,7 @@ import netcracker.app.wf.client.admin.mvp.view.widgets.home.HomeViewImpl;
 import netcracker.app.wf.client.admin.mvp.view.widgets.tasks.AddTaskViewImpl;
 import netcracker.app.wf.client.admin.mvp.view.widgets.tasks.TasksViewImpl;
 import netcracker.app.wf.client.admin.mvp.view.widgets.users.AddUserImpl;
+import netcracker.app.wf.client.admin.mvp.view.widgets.users.EditUserViewImpl;
 import netcracker.app.wf.client.admin.mvp.view.widgets.users.UsersViewImpl;
 
 /**
@@ -22,6 +23,7 @@ public class ClientFactoryImpl implements ClientFactory {
     private final TasksView tasksView = new TasksViewImpl();
     private final AddUserView addUserView = new AddUserImpl();
     private final AddTaskView addTaskView = new AddTaskViewImpl();
+    private final EditUserView editUserView = new EditUserViewImpl();
 
 
     @Override
@@ -57,5 +59,10 @@ public class ClientFactoryImpl implements ClientFactory {
     @Override
     public AddTaskView getAddTaskView() {
         return addTaskView;
+    }
+
+    @Override
+    public EditUserView getEditUserView() {
+        return editUserView;
     }
 }

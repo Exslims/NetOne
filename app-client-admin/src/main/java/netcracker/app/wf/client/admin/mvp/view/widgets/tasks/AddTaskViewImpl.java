@@ -9,7 +9,6 @@ import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.client.admin.mvp.view.widgets.AddTaskView;
 import netcracker.app.wf.back.model.Task;
 import netcracker.app.wf.back.model.User;
-import netcracker.app.wf.client.admin.style.GwtResource;
 
 import java.sql.Date;
 import java.sql.Timestamp;

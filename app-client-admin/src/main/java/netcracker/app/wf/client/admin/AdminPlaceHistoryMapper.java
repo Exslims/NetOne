@@ -1,5 +1,6 @@
 package netcracker.app.wf.client.admin;
 
+import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.place.shared.WithTokenizers;
 import netcracker.app.wf.client.admin.mvp.place.*;
@@ -7,6 +8,12 @@ import netcracker.app.wf.client.admin.mvp.place.*;
 /**
  * Created by ���������� on 04.12.2015.
  */
-@WithTokenizers({UsersPlace.Tokenizer.class, TasksPlace.Tokenizer.class, HomePlace.Tokenizer.class, AddUserPlace.Tokenizer.class, AddTaskPlace.Tokenizer.class})
+@WithTokenizers({
+                UsersPlace.Tokenizer.class,
+                TasksPlace.Tokenizer.class,
+                HomePlace.Tokenizer.class,
+                AddUserPlace.Tokenizer.class,
+                AddTaskPlace.Tokenizer.class,
+                EditUserPlace.Tokenizer.class})
 public interface AdminPlaceHistoryMapper extends PlaceHistoryMapper {
 }

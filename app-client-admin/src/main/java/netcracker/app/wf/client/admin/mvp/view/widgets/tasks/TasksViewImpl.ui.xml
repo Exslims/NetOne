@@ -18,6 +18,9 @@
                     <g:Button ui:field="showAllButton">Show all!</g:Button>
                 </div>
             </div>
+            <div class="tasksBox">
+                <g:VerticalPanel ui:field="accordion"/>
+            </div>
             <div class="scroll">
                 <g:FlexTable ui:field="flexTable"/>
             </div>

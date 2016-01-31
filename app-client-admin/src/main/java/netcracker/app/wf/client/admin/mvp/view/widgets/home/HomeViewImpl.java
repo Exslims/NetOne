@@ -6,7 +6,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import netcracker.app.wf.client.admin.mvp.view.widgets.HomeView;
-import netcracker.app.wf.client.admin.style.GwtResource;
 
 /**
  * Created by ���������� on 05.12.2015.

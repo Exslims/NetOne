@@ -5,8 +5,9 @@
             <h1>Используемые технологии</h1>
             <p> Spring 4.x(Spring IoC, Spring MVC)
                 GWT 2.7
+                Hibernate ORM
                 RestyGWT
-                RestFull
+                RestFul
                 Jackson
                 Log4J</p>
         </div>

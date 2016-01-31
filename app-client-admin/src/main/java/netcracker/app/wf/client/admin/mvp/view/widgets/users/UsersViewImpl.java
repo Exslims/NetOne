@@ -7,6 +7,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.back.model.Role;
 import netcracker.app.wf.back.model.Task;
@@ -112,17 +113,10 @@ public class UsersViewImpl extends Composite implements UsersView {
 
             HorizontalPanel utilsPanel = new HorizontalPanel();
 
-//
-//            Button editButton = new Button("Edit");
-//            editButton.setStyleName("button");
-//            History.encodeHistoryToken("edit-user:");
-//            editButton.addClickHandler(new ClickHandler() {
-//                @Override
-//                public void onClick(ClickEvent event) {
-//                    History.newItem("edit-user");
-//                }
-//            });
 
+            Hyperlink hyperlink = new Hyperlink();
+            hyperlink.setText("Edit");
+            hyperlink.setTargetHistoryToken("edit-user:userid="+user.getId());
 
             Button removeButton = new Button("Delete");
             removeButton.addClickHandler(new ClickHandler() {
@@ -132,7 +126,7 @@ public class UsersViewImpl extends Composite implements UsersView {
                     flexTable.removeRow(rowCount);
                 }
             });
-//            utilsPanel.add(editButton);
+            utilsPanel.add(hyperlink);
             utilsPanel.add(removeButton);
             flexTable.setWidget(rowCount,8,utilsPanel);
         }

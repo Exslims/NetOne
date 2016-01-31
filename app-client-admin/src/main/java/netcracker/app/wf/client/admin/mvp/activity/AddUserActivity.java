@@ -39,12 +39,12 @@ public class AddUserActivity extends AbstractActivity implements AddUserView.Add
         service.addUser(user, new MethodCallback<Void>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-
+                view.setStatus("Can not add user: " + throwable.getMessage());
             }
 
             @Override
             public void onSuccess(Method method, Void aVoid) {
-
+                view.setStatus("User was successfully added");
             }
         });
     }
@@ -54,7 +54,7 @@ public class AddUserActivity extends AbstractActivity implements AddUserView.Add
         service.checkAvailableLogin(token, new MethodCallback<Boolean>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-
+                view.setCheckLoginLabel("Can not check login: " + throwable.getMessage());
             }
 
             @Override

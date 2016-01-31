@@ -24,10 +24,10 @@ public class ActivityMapperImpl implements ActivityMapper {
             return new HomeActivity(clientFactory);
         }else if(place instanceof AddUserPlace){
             return new AddUserActivity(clientFactory);
-        }
-        else
-        if(place instanceof AddTaskPlace){
+        }else if(place instanceof AddTaskPlace){
             return new AddTaskActivity(clientFactory);
+        }else if(place instanceof EditUserPlace){
+            return new EditUserActivity(clientFactory,((EditUserPlace) place).getUrl());
         }
         return null;
     }

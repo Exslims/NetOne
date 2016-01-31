@@ -18,7 +18,7 @@
                 </tr>
                 <tr>
                     <td><g:Button ui:field="submitButton">Submit</g:Button> </td>
-                    <td><g:Label ui:field="statusField">Submit</g:Label> </td>
+                    <td><g:Label ui:field="statusField"/> </td>
                 </tr>
             </table>
         </div>
