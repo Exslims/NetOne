@@ -23,7 +23,7 @@ public class ClientFactoryImpl implements ClientFactory {
     private final TasksView tasksView = new TasksViewImpl();
     private final AddUserView addUserView = new AddUserImpl();
     private final AddTaskView addTaskView = new AddTaskViewImpl();
-    private final EditUserView editUserView = new EditUserViewImpl();
+    private final EditUserVIew editUserView = new EditUserViewImpl();
 
 
     @Override
@@ -62,7 +62,7 @@ public class ClientFactoryImpl implements ClientFactory {
     }
 
     @Override
-    public EditUserView getEditUserView() {
+    public EditUserVIew getEditUserView() {
         return editUserView;
     }
 }

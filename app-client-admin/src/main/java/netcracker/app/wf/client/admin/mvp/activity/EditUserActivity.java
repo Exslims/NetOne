@@ -2,20 +2,19 @@ package netcracker.app.wf.client.admin.mvp.activity;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dev.util.collect.HashMap;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import netcracker.app.wf.back.model.User;
 import netcracker.app.wf.client.admin.ClientFactory;
 import netcracker.app.wf.client.admin.UserService;
-import netcracker.app.wf.client.admin.mvp.view.widgets.EditUserView;
+import netcracker.app.wf.client.admin.mvp.view.widgets.EditUserVIew;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
 
-public class EditUserActivity extends AbstractActivity implements EditUserView.EditUserPresenter {
+public class EditUserActivity extends AbstractActivity implements EditUserVIew.EditUserPresenter {
     private ClientFactory clientFactory;
-    private EditUserView view;
+    private EditUserVIew view;
     private UserService service;
 
     private int id;

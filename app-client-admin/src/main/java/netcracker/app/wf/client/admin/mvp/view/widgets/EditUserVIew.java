@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Константин on 31.01.2016.
  */
-public interface EditUserView extends IsWidget {
+public interface EditUserVIew extends IsWidget {
     void setPresenter(EditUserPresenter presenter);
     void setCurrentUser(User user);
     void setStatus(String token);

@@ -3,11 +3,12 @@ package netcracker.app.wf.client.admin.layout;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.Widget;
 import netcracker.app.wf.back.model.User;
-import netcracker.app.wf.client.admin.ClientFactory;
 import netcracker.app.wf.client.admin.UserService;
-import netcracker.app.wf.client.admin.style.GwtResource;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 

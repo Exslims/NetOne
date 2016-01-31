@@ -9,12 +9,12 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.back.model.Role;
 import netcracker.app.wf.back.model.User;
-import netcracker.app.wf.client.admin.mvp.view.widgets.EditUserView;
+import netcracker.app.wf.client.admin.mvp.view.widgets.EditUserVIew;
 
 /**
  * Created by Константин on 31.01.2016.
  */
-public class EditUserViewImpl extends Composite implements EditUserView {
+public class EditUserViewImpl extends Composite implements EditUserVIew {
     private EditUserPresenter presenter;
 
     interface EditUserViewImplUiBinder extends UiBinder<Widget, EditUserViewImpl> {

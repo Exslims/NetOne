@@ -1,10 +1,12 @@
 package netcracker.app.wf.back.model;
 
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -82,8 +84,10 @@ public class User {
         this.javaSkills = javaSkills;
     }
 
-    @OneToMany(mappedBy = "user" , fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "user" ,orphanRemoval = true, fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
+    @org.hibernate.annotations.Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     public Set<Task> getTasks() {
         return tasks;
     }
@@ -102,8 +106,9 @@ public class User {
         this.tasks = tasks;
     }
 
-    @OneToMany(mappedBy = "user" , fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
+    @org.hibernate.annotations.Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     public Set<Role> getRoles() {
         return roles;
     }
@@ -152,4 +157,6 @@ public class User {
     public void setLogin(String login) {
         this.login = login;
     }
+
+
 }

@@ -16,6 +16,6 @@ public interface ClientFactory {
     public TasksView getTasksView();
     public AddUserView getAddUserView();
     public AddTaskView getAddTaskView();
-    public EditUserView getEditUserView();
+    public EditUserVIew getEditUserView();
 
 }
