@@ -23,7 +23,6 @@ public class TasksActivity extends AbstractActivity implements TasksView.TasksPr
     private ClientFactory clientFactory;
     private TasksView view;
     private UserService service;
-    List<User> currentUsers;
 
     public TasksActivity(ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
@@ -41,7 +40,7 @@ public class TasksActivity extends AbstractActivity implements TasksView.TasksPr
     }
 
     @Override
-    public void updateUser(final User user) {
+    public void updateUser(User user) {
 
         service.updateUser(user, new MethodCallback<Void>() {
             @Override
@@ -51,15 +50,13 @@ public class TasksActivity extends AbstractActivity implements TasksView.TasksPr
 
             @Override
             public void onSuccess(Method method, Void aVoid) {
-                view.setStatus("User " + user.getTasks().size() + " was successfully updated");
+//                view.setStatus("User " + user.getTasks().size() + " was successfully updated");
             }
         });
     }
 
     @Override
     public void updateTableView() {
-        HashMap<Task,User> pairs = new HashMap<>();
-
 
         service.getAllUsers(new MethodCallback<List<User>>() {
             @Override
@@ -69,16 +66,23 @@ public class TasksActivity extends AbstractActivity implements TasksView.TasksPr
 
             @Override
             public void onSuccess(Method method, List<User> users) {
-                view.setStatus("Loading tasks successfully completed");
+                String log = "Enter to method, ";
                 HashMap<Task,User> pairs = new HashMap<>();
 
+                log+="enter to user list, ";
                 for (User user : users) {
+                    log += user.getLogin() + ", ";
                     Set<Task> tasks = user.getTasks();
-                    for (Task task :tasks) {
-                        pairs.put(task,user);
+                    if(tasks.size() != 0) {
+                        for (Task task : tasks) {
+                            log += task.getTitle() + ", ";
+                            pairs.put(task, user);
+                        }
                     }
                 }
+                view.setStatus(log);
                 view.updateTable(pairs);
+//                view.setStatus("Loading tasks successfully completed: "+ pairs.size());
             }
         });
     }
