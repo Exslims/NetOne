@@ -82,6 +82,8 @@ public class UsersViewImpl extends Composite implements UsersView {
     }
 
     public void updateTable(List<User> users) {
+        this.currentUserList = users;
+
         flexTable.removeAllRows();
         flexTable.setText(0, 0, "Login");
         flexTable.setText(0, 1, "Name");
@@ -93,8 +95,8 @@ public class UsersViewImpl extends Composite implements UsersView {
         flexTable.setText(0,7,"Role");
         flexTable.setText(0,8,"");
 
-        for (final User user : users) {
-            final int rowCount = flexTable.getRowCount();
+        for (final User user : currentUserList) {
+            int rowCount = flexTable.getRowCount();
             flexTable.setText(rowCount,0,user.getLogin());
             flexTable.setText(rowCount,1,user.getName());
             flexTable.setText(rowCount,2,user.getEmail());
@@ -119,19 +121,11 @@ public class UsersViewImpl extends Composite implements UsersView {
             hyperlink.setTargetHistoryToken("edit-user:userid="+user.getId());
 
             Button removeButton = new Button("Delete");
-            removeButton.addClickHandler(new ClickHandler() {
-                @Override
-                public void onClick(ClickEvent event) {
-                    presenter.deleteUser(user);
-                    flexTable.removeRow(rowCount);
-                }
-            });
+            removeButton.addClickHandler(new CustomClickHandler(rowCount,user));
             utilsPanel.add(hyperlink);
             utilsPanel.add(removeButton);
             flexTable.setWidget(rowCount,8,utilsPanel);
         }
-
-        currentUserList = users;
     }
 
     @Override
@@ -178,5 +172,22 @@ public class UsersViewImpl extends Composite implements UsersView {
 //            return false;
 //        });
 //    }-*/;
+
+    class CustomClickHandler implements ClickHandler{
+
+        private int row;
+        private User user;
+
+        public CustomClickHandler(int row, User user) {
+            this.row = row;
+            this.user = user;
+        }
+
+        @Override
+        public void onClick(ClickEvent clickEvent) {
+            flexTable.removeRow(row);
+            presenter.deleteUser(user);
+        }
+    }
 
 }

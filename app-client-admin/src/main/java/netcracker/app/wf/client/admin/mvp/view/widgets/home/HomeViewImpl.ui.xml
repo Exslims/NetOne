@@ -4,13 +4,15 @@
     <g:HTMLPanel>
         <div class="information">
             <h1>Используемые технологии</h1>
-            <p> Spring 4.x(Spring IoC, Spring MVC)
+            <p> Java 1.8
+                Spring 4.x(Spring IoC, Spring MVC)
+                Spring Security 3.2.x
                 GWT 2.7
-                Hibernate ORM
-                RestyGWT
-                RestFul
-                Jackson
-                Log4J</p>
+                Hibernate ORM 4.3.6
+                RestyGWT 2.0.3
+                RestFul(JSON)
+                Jackson 2.6.3
+                Log4J 1.2 </p>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>

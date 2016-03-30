@@ -9,19 +9,19 @@ import netcracker.app.wf.client.user.mvp.view.widgets.HomeView;
 /**
  * Created by Константин on 29.01.2016.
  */
-public class HomeViewimpl extends Composite implements HomeView {
+public class HomeViewImpl extends Composite implements HomeView {
     private HomeView.HomePresenter presenter;
     @Override
     public void setPresenter(HomePresenter presenter) {
         this.presenter = presenter;
     }
 
-    interface HomeViewimplUiBinder extends UiBinder<Widget, HomeViewimpl> {
+    interface HomeViewimplUiBinder extends UiBinder<Widget, HomeViewImpl> {
     }
 
     private static HomeViewimplUiBinder ourUiBinder = GWT.create(HomeViewimplUiBinder.class);
 
-    public HomeViewimpl() {
+    public HomeViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
 }

@@ -18,6 +18,7 @@ public interface UsersView extends IsWidget {
         void updateTableByNameLike(String token);
         void updateTableByLoginLike(String token);
         void updateTableByEmailLike(String token);
+        boolean isCurrentAuthUser(User user);
         void deleteUser(User user);
         void showAll();
     }

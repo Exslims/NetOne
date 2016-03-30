@@ -3,25 +3,25 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <g:HTMLPanel>
         <div>
-            <div class="searchContainer">
-                <div class="block1">
-                    <label>Enter title:</label>
-                    <g:TextBox ui:field="titleField"/>
-                    <g:Button ui:field="searchByTitleButton">Search!</g:Button>
-                </div>
-                <div class="block1">
-                    <label>Enter id:</label>
-                    <g:TextBox ui:field="idField"/>
-                    <g:Button ui:field="searchByIdButton">Search!</g:Button>
-                </div>
-                <div class="block1">
-                    <g:Button ui:field="showAllButton">Show all!</g:Button>
-                </div>
-            </div>
+            <!--<div class="searchContainer">-->
+                <!--<div class="block1">-->
+                    <!--<label>Enter title:</label>-->
+                    <!--<g:TextBox ui:field="titleField"/>-->
+                    <!--<g:Button ui:field="searchByTitleButton">Search!</g:Button>-->
+                <!--</div>-->
+                <!--<div class="block1">-->
+                    <!--<label>Enter id:</label>-->
+                    <!--<g:TextBox ui:field="idField"/>-->
+                    <!--<g:Button ui:field="searchByIdButton">Search!</g:Button>-->
+                <!--</div>-->
+                <!--<div class="block1">-->
+                    <!--<g:Button ui:field="showAllButton">Show all!</g:Button>-->
+                <!--</div>-->
+            <!--</div>-->
             <div class="tasksBox">
                 <g:VerticalPanel ui:field="accordion"/>
             </div>
-            <div class="scroll">
+            <div class="taskScroll">
                 <g:FlexTable ui:field="flexTable"/>
             </div>
             <div class="statusBox">

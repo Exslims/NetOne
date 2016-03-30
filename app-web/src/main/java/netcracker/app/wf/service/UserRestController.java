@@ -17,13 +17,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServlet;
 import java.util.List;
 
 
 @RestController
 @RequestMapping("/users")
-public class UserRestController extends HttpServlet {
+public class UserRestController {
     Logger logger = Logger.getLogger(this.getClass());
 
     @Autowired

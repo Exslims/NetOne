@@ -4,7 +4,9 @@ import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 import netcracker.app.wf.client.user.mvp.activity.HomeActivity;
+import netcracker.app.wf.client.user.mvp.activity.TasksActivity;
 import netcracker.app.wf.client.user.mvp.place.HomePlace;
+import netcracker.app.wf.client.user.mvp.place.TasksPlace;
 
 /**
  * Created by Константин on 29.01.2016.
@@ -21,6 +23,8 @@ public class ActivityMapperImpl implements ActivityMapper {
     public Activity getActivity(Place place) {
         if(place instanceof HomePlace){
             return new HomeActivity(clientFactory);
+        }else if(place instanceof TasksPlace){
+            return new TasksActivity(clientFactory);
         }
         return null;
     }

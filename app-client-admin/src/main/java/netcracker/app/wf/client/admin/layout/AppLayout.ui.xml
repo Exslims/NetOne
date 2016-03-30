@@ -3,7 +3,7 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <g:HTMLPanel>
         <div class="container">
-            <div class="tutorial">
+            <div class="netcracker">
                 <div class="menuBox">
                     <ul>
                         <li> <g:Hyperlink targetHistoryToken="home:">Home</g:Hyperlink></li>

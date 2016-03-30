@@ -2,10 +2,11 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <g:HTMLPanel>
         <div class="container">
-            <div class="tutorial">
+            <div class="netcracker">
                 <div class="menuBox">
                     <ul>
                         <li> <g:Hyperlink targetHistoryToken="home:">Home</g:Hyperlink></li>
+                        <li> <g:Hyperlink targetHistoryToken="tasks:">My tasks</g:Hyperlink></li>
                         <!--<li>Tasks<i class="fa fa-angle-down"></i>-->
                             <!--<ul>-->
                                 <!--<li><g:Hyperlink targetHistoryToken="tasks:">Task list</g:Hyperlink></li>-->

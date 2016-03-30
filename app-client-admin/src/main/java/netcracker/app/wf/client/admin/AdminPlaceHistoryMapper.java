@@ -1,6 +1,5 @@
 package netcracker.app.wf.client.admin;
 
-import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.place.shared.WithTokenizers;
 import netcracker.app.wf.client.admin.mvp.place.*;

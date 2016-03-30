@@ -66,23 +66,18 @@ public class TasksActivity extends AbstractActivity implements TasksView.TasksPr
 
             @Override
             public void onSuccess(Method method, List<User> users) {
-                String log = "Enter to method, ";
                 HashMap<Task,User> pairs = new HashMap<>();
 
-                log+="enter to user list, ";
                 for (User user : users) {
-                    log += user.getLogin() + ", ";
                     Set<Task> tasks = user.getTasks();
                     if(tasks.size() != 0) {
                         for (Task task : tasks) {
-                            log += task.getTitle() + ", ";
                             pairs.put(task, user);
                         }
                     }
                 }
-                view.setStatus(log);
                 view.updateTable(pairs);
-//                view.setStatus("Loading tasks successfully completed: "+ pairs.size());
+                view.setStatus("Loading tasks successfully completed");
             }
         });
     }

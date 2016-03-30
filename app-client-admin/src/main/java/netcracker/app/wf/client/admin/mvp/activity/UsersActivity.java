@@ -111,6 +111,16 @@ public class UsersActivity extends AbstractActivity implements UsersView.UsersPr
     }
 
     @Override
+    public boolean isCurrentAuthUser(User user) {
+//        CallBack callBack = new CallBack(user);
+//        service.getLoggedUser(callBack);
+//
+//        view.setStatusLabel(String.valueOf(callBack.isAuthUser()) + ": basldlasd");
+//        return callBack.isAuthUser();
+        return false;
+    }
+
+    @Override
     public void deleteUser(final User user) {
         service.deleteUser(user, new MethodCallback<Void>() {
             @Override
@@ -141,4 +151,27 @@ public class UsersActivity extends AbstractActivity implements UsersView.UsersPr
             }
         });
     }
+
+//    class CallBack implements MethodCallback<User>{
+//        private User currentUser;
+//        private User authUser;
+//
+//        public CallBack(User currentUser) {
+//            this.currentUser = currentUser;
+//        }
+//
+//        public boolean isAuthUser(){
+//            boolean b = authUser.getLogin().equals(currentUser.getLogin());
+//            return b;
+//        }
+//        @Override
+//        public void onFailure(Method method, Throwable throwable) {
+//
+//        }
+//
+//        @Override
+//        public void onSuccess(Method method, User user) {
+//            authUser = user;
+//        }
+//    }
 }

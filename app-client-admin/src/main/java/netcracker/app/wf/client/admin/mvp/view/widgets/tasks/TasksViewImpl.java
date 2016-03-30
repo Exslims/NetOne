@@ -5,6 +5,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
 import netcracker.app.wf.back.model.User;
 import netcracker.app.wf.client.admin.mvp.view.widgets.TasksView;
@@ -39,6 +40,7 @@ public class TasksViewImpl extends Composite implements TasksView {
 
         flexTable.setStyleName("flexTable");
         statusField.setStyleName("status");
+        accordion.setStyleName("accordion");
 
         currentTasks = new ArrayList<>();
     }
@@ -56,20 +58,19 @@ public class TasksViewImpl extends Composite implements TasksView {
 //        presenter.showAll();
 //    }
 //
-//    @UiHandler("flexTable")
-//    void onClickTable(ClickEvent event){
-//        int rowIndex = flexTable.getCellForEvent(event).getRowIndex();
-//        if(rowIndex != 0){
-//            fillAccordion(rowIndex);
-//        }
-//    }
+    @UiHandler("flexTable")
+    void onClickTable(ClickEvent event){
+        int rowIndex = flexTable.getCellForEvent(event).getRowIndex();
+        if(rowIndex != 0){
+            fillAccordion(rowIndex);
+        }
+    }
 
 
     @Override
     public void updateTable(HashMap<Task,User> pairs) {
         this.currentPairs = pairs;
 
-        statusField.setText(String.valueOf(currentPairs.size()));
         flexTable.removeAllRows();
         flexTable.setText(0, 0, "Id");
         flexTable.setText(0, 1, "Title");
@@ -107,7 +108,6 @@ public class TasksViewImpl extends Composite implements TasksView {
 
     @SuppressWarnings("all")
     private void fillAccordion(int userIndex){
-
         accordion.clear();
         Label head = new Label("Info");
         head.setStyleName("accordion_header");
@@ -116,33 +116,59 @@ public class TasksViewImpl extends Composite implements TasksView {
         Task task = currentTasks.get(userIndex - 1);
 
         VerticalPanel taskPanel = new VerticalPanel();
-        taskPanel.addStyleName("accordion");
-        Label title = new Label("Task info");
-        title.addStyleName("accordion__title");
+            taskPanel.addStyleName("accordion");
+            Label taskInfo = new Label("Task info");
+            taskInfo.addStyleName("accordion__title");
+            taskPanel.add(taskInfo);
 
-        taskPanel.add(new Label("Title:"));
-        Label taskTitle = new Label(task.getTitle());
-        taskTitle.addStyleName("accordion__copy");
-        taskPanel.add(taskTitle);
+            taskPanel.add( new Label("Title:"));
+            Label taskTitle = new Label(task.getTitle());
+            taskTitle.addStyleName("accordion__copy");
+            taskPanel.add(taskTitle);
 
 
-        taskPanel.add(new Label("Description:"));
-        Label content = new Label(task.getDescription());
-        content.addStyleName("accordion__copy");
-        taskPanel.add(content);
+            taskPanel.add(new Label("Description:"));
+
+            TextArea descArea = new TextArea();
+            descArea.setText(task.getDescription());
+            Label content = new Label(task.getDescription());
+            content.addStyleName("accordion__copy");
+            taskPanel.add(content);
 
         accordion.add(taskPanel);
 
+
         User user = currentPairs.get(task);
 
-//        VerticalPanel userPanel = new VerticalPanel();
-//        taskPanel.addStyleName("accordion");
-//        Label title = new Label(task.getTitle());
-//        title.addStyleName("accordion__title");
-//        Label content = new Label(task.getDescription());
-//        content.addStyleName("accordion__copy");
-//        taskPanel.add(title);
-//        taskPanel.add(content);
+        VerticalPanel userPanel = new VerticalPanel();
+            userPanel.addStyleName("accordion");
+            Label userInfo = new Label("User info");
+            userInfo.addStyleName("accordion__title");
+            userPanel.add(userInfo);
+
+        userPanel.add( new Label("Login:"));
+        Label userLogin = new Label(user.getLogin());
+        userLogin.addStyleName("accordion__copy");
+        userPanel.add(userLogin);
+
+        userPanel.add( new Label("Name:"));
+        Label userName = new Label(user.getName());
+        userName.addStyleName("accordion__copy");
+        userPanel.add(userName);
+
+        userPanel.add( new Label("Email:"));
+        Label userEmail = new Label(user.getEmail());
+        userEmail.addStyleName("accordion__copy");
+        userPanel.add(userEmail);
+
+        userPanel.add( new Label("Java Skills:"));
+        Label userSkills = new Label(user.getJavaSkills());
+        userSkills.addStyleName("accordion__copy");
+        userPanel.add(userSkills);
+
+
+        accordion.add(userPanel);
+
     }
 
     @Override
